@@ -1,0 +1,128 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>JavaScript</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link rel="manifest" href="/javascript/site.webmanifest">
+  <link rel="apple-touch-icon" href="/javascript/apple-touch-icon.png">
+      <!-- Link to Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Roboto:wght@400;500;700&family=Roboto+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+      
+    <!-- Link to this site's main stylesheet -->
+    <link rel="stylesheet" href="assets/js/dist/main.912481246cb8b020dcbd.css">
+    
+
+  <meta name="theme-color" content="#58a6ff">
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg border-bottom border-3">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="">JS</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Web APIs
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="web">Web APIs</a></li>
+            <li><hr class="dropdown-divider"></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            JavaScript
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="javascript">JavaScript</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="javascript/functions">Functions</a></li>
+            <li><a class="dropdown-item" href="javascript/objects">Objects</a></li>
+            <li><a class="dropdown-item" href="javascript/generators">Generators</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  <main class="container mt-3">
+    <div class="row">
+      <div class="col">
+        <h1 id="javascript">JavaScript</h1>
+
+<blockquote class="blockquote blockquote--border mx-5 px-4">
+  <p><strong>JavaScript (JS)</strong> is a lightweight, interpreted, or <strong><em>just-in-time 
+compiled</em></strong> programming language with <strong><em>first-class functions</em></strong>.</p>
+
+  <p class="mb-0">JavaScript is a 
+<strong><em>prototype-based</em></strong>, multi-paradigm, <strong><em>single-threaded</em></strong>, dynamic 
+language …</p>
+  <p class="text-end">— <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">https://developer.mozilla.org/en-US/docs/Web/JavaScript</a></p>
+</blockquote>
+
+<p class="lead">What does this mean?</p>
+
+<ul>
+  <li><strong>just-in-time (JIT) compiled</strong>, also known as run-time compilation, means that the code is compiled just prior to execution.</li>
+  <li><strong>first-class functions</strong> means that a language is capable of using functions like any other variable; they can be assigned, passed, returned, even placed inside an array.</li>
+  <li><strong>prototype-based</strong> programing languages are those where <em>behavior reuse</em> (or inheritance) is achieved through the reuse of existing objects — objects which serve as prototypes.</li>
+  <li><strong>single-threaded</strong> means that JavaScrip runs on the browsers’ main thread. This also means that performance matters.</li>
+</ul>
+
+<p>JavaScript by itself doesn’t do anything; it must be run with a JavaScript engine.
+V8 is the most common JavaScript engine developed by Google.
+Browsers use a JavaScript engine to compile and execute JavaScript.</p>
+
+<p>The browser isn’t the only environment that can run JavaScript.</p>
+
+<h2 id="nodejs">Node.js</h2>
+
+<p><strong><em>Node.js</em></strong> is an open-source, cross-platform JavaScript runtime environment built on the V8 JavaScript Engine.
+It executes JavaScript outside a web browser.</p>
+
+<blockquote class="blockquote blockquote--border mx-5 px-4">
+  <p class="display-4">If you know JavaScript then you know Node.js</p>
+
+  <p class="text-end">— Me</p>
+</blockquote>
+
+<p>Yes, Node.js is just JavaScript with some extra features for working with your operating system and file storage.
+If you already know javascript then Node.js should be a piece of cake.</p>
+
+<p>Node.js is a common server environment that allows a developer to interact with a server using JavaScript.</p>
+
+<h2 id="javascript-vs-web-apis">JavaScript vs. Web APIs</h2>
+
+<p>JavaScript wouldn’t do a web developer any good if they couldn’t interact with a webpage somehow.
+Purely JavaScript code is not capable of interacting with a webpage; there are no browser methods built into it.</p>
+
+<p><strong>This is where Web APIs come in.</strong></p>
+
+<p>A common mistake of newcomers to JavaScript is to confuse the JavaScript language itself with Web APIs; <strong>they are not the same thing</strong>:</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">myId</span><span class="dl">'</span><span class="p">).</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="s2">`&lt;h1&gt;Hello!&lt;/h1&gt;`</span><span class="p">;</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">document</code>, <code class="language-plaintext highlighter-rouge">getElementById()</code>, and <code class="language-plaintext highlighter-rouge">innerHTML</code> are not part of the JavaScript Language!</li>
+  <li><code class="language-plaintext highlighter-rouge">getElementById()</code> is a method of the <code class="language-plaintext highlighter-rouge">Document</code> interface which is a Web API and <code class="language-plaintext highlighter-rouge">inerHTML</code> is a property of the <code class="language-plaintext highlighter-rouge">Element</code> class.</li>
+</ul>
+
+
+      </div>
+    </div>
+  </main>
+      <!-- custom compiled and minified javascript -->
+    <script src="/javascript/assets/js/dist/main.912481246cb8b020dcbd.bundle.js" defer></script>
+
+</body>
+</html>
+

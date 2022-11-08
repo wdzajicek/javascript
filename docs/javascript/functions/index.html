@@ -1,0 +1,392 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Functions | JavaScript</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link rel="manifest" href="/javascript/site.webmanifest">
+  <link rel="apple-touch-icon" href="/javascript/apple-touch-icon.png">
+      <!-- Link to Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Roboto:wght@400;500;700&family=Roboto+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+      
+    <!-- Link to this site's main stylesheet -->
+    <link rel="stylesheet" href="../../assets/js/dist/main.912481246cb8b020dcbd.css">
+    
+
+  <meta name="theme-color" content="#58a6ff">
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg border-bottom border-3">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="../../">JS</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Web APIs
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="../../web">Web APIs</a></li>
+            <li><hr class="dropdown-divider"></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            JavaScript
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="../../javascript">JavaScript</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="../../javascript/functions">Functions</a></li>
+            <li><a class="dropdown-item" href="../../javascript/objects">Objects</a></li>
+            <li><a class="dropdown-item" href="../../javascript/generators">Generators</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  <main class="container mt-3">
+    <div class="row">
+      <div class="col">
+        <h1 id="functions">Functions</h1>
+
+<hr />
+
+<h2 id="contents">Contents</h2>
+
+<ul>
+  <li><a href="#functions">Functions</a>
+    <ul>
+      <li><a href="#contents">Contents</a></li>
+      <li><a href="#the-basics">The Basics</a></li>
+      <li><a href="#defining-functions">Defining Functions</a>
+        <ul>
+          <li><a href="#function-declarations">Function Declarations</a></li>
+          <li><a href="#function-expressions">Function Expressions</a></li>
+        </ul>
+      </li>
+      <li><a href="#parameters">Parameters</a>
+        <ul>
+          <li><a href="#default-values">Default values</a></li>
+        </ul>
+      </li>
+      <li><a href="#calling-functions">Calling Functions</a></li>
+      <li><a href="#hoisting">Hoisting</a></li>
+      <li><a href="#local-variables">Local Variables</a></li>
+      <li><a href="#outer-variables">Outer Variables</a></li>
+      <li><a href="#returning-a-value">Returning a value</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="the-basics">The Basics</h2>
+
+<p class="lead">Functions are a fundamental building-block of JavaScript.</p>
+
+<p>A function is a group of statements that perform a task or calculate a value.
+They allow us to organize our code into logical groupings and make it reuseable.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">name</span><span class="p">(</span><span class="nx">param0</span><span class="p">,</span> <span class="nx">param1</span><span class="p">,</span> <span class="cm">/* … ,*/</span> <span class="nx">paramN</span><span class="p">)</span> <span class="p">{</span>
+  <span class="cm">/* function body */</span>
+  <span class="nx">statements</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><em>Defining</em> a function doesn’t <em>execute</em> it. Defining it gives it a name and specifies what the function should do.</p>
+
+<p>See <a href="#defining-functions">Defining Functions</a> for more information.</p>
+
+<p><em>Calling</em> a function is what executes it with the given parameters.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">sum</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="c1">// This code does nothing by itself</span>
+<span class="c1">// we need to call our function for it to work!</span>
+</code></pre></div></div>
+
+<p>To call a function use the function name followed by parentheses which enclose a comma separated list of parameters to pass to the function.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">sum</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span> <span class="nx">sum</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="p">);</span> <span class="c1">// 4 is returned and then printed to the console!</span>
+<span class="c1">// We can store the result in a variable</span>
+<span class="kd">const</span> <span class="nx">three</span> <span class="o">=</span> <span class="nx">sum</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span> <span class="c1">// three = 3</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">three</span><span class="p">);</span> <span class="c1">// 3</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span> <span class="nx">sum</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="p">);</span> <span class="c1">// 2</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span> <span class="nx">sum</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="p">);</span> <span class="c1">// 5, we can call sum() as many times as we want!</span>
+</code></pre></div></div>
+
+<p>See <a href="#calling-functions">Calling Functions</a> for more information.</p>
+
+<h2 id="defining-functions">Defining Functions</h2>
+
+<h3 id="function-declarations">Function Declarations</h3>
+
+<p>Functions may be created using a <strong><em>function declaration</em></strong> (also called a <strong><em>function definition</em></strong>.)</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">name</span><span class="p">(</span><span class="nx">param1</span><span class="p">,</span> <span class="nx">param2</span><span class="p">,</span> <span class="cm">/* … ,*/</span> <span class="nx">paramN</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">statements</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>A function declaration consists of the following:</p>
+<ul>
+  <li>The <code class="language-plaintext highlighter-rouge">function</code> keyword followed by the name of the function.</li>
+  <li>An (optional) comma separated list of parameters enclosed in parentheses.</li>
+  <li>Curly braces that enclose the function body which is holds the function statements (or tasks the function caries out).</li>
+</ul>
+
+<h3 id="function-expressions">Function Expressions</h3>
+
+<p>Another way to create functions is using a function expression:</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">sum</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>The example above uses an anonymous function or a function without a name.
+Function expressions can use either named or anonymous functions.</p>
+
+<p>When debugging JavaScript, named functions make identification easier in the browser’s developer tools.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Better for debugging purposes</span>
+<span class="kd">const</span> <span class="nx">sum</span> <span class="o">=</span> <span class="kd">function</span> <span class="nx">add</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="parameters">Parameters</h2>
+
+<p>Functions may optionally have <strong><em>parameters</em></strong> that allow us to pass arbitrary data to the function.</p>
+
+<p>A <strong><em>parameter</em></strong> is a named variable passed into a function.</p>
+
+<p>Parameters are used to import <strong><em>arguments</em></strong> into a function.</p>
+
+<p>The difference between <em>parameters</em> and <em>arguments</em>:</p>
+<ul>
+  <li><em>parameters</em> are listed in a functions definition.</li>
+  <li><em>arguments</em> are the actual values passed to the function when its called.</li>
+  <li><em>arguments</em> are passed to a function, the values of which are assigned to its <em>parameters</em>.</li>
+</ul>
+
+<h3 id="default-values">Default values</h3>
+
+<p>Calling a function that was defined with two parameters 
+using only one argument is perfectly valid JavaScript:</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">helloUser</span><span class="p">(</span><span class="nx">greeting</span><span class="p">,</span> <span class="nx">user</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">greeting</span><span class="p">}</span><span class="s2">, </span><span class="p">${</span><span class="nx">user</span><span class="p">}</span><span class="s2">!`</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">helloUser</span><span class="p">(</span><span class="dl">'</span><span class="s1">Hello</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">Bob</span><span class="dl">'</span><span class="p">);</span> <span class="c1">// Hello, Bob!</span>
+<span class="nx">helloUser</span><span class="p">(</span><span class="dl">'</span><span class="s1">Hi</span><span class="dl">'</span><span class="p">);</span> <span class="c1">// Hi, undefined!</span>
+</code></pre></div></div>
+
+<p>The above function can be made more flexible if we create a default value to assign to <code class="language-plaintext highlighter-rouge">user</code>, in case the second argument it missing.</p>
+
+<p>Historically, this was accomplished by checking <em>if a parameters value is undefined</em> or using a logical or (<code class="language-plaintext highlighter-rouge">||</code>) operator:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// if user is undefined set it to Guest</span>
+<span class="kd">function</span> <span class="nx">helloUser</span><span class="p">(</span><span class="nx">greeting</span><span class="p">,</span> <span class="nx">user</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span> <span class="nx">user</span> <span class="o">===</span> <span class="kc">undefined</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="nx">user</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">Guest</span><span class="dl">'</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">greeting</span><span class="p">}</span><span class="s2">, </span><span class="p">${</span><span class="nx">user</span><span class="p">}</span><span class="s2">!`</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// this accomplishes the same thing</span>
+<span class="kd">function</span> <span class="nx">helloUser</span><span class="p">(</span><span class="nx">greeting</span><span class="p">,</span> <span class="nx">user</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">user</span> <span class="o">=</span> <span class="nx">user</span> <span class="o">||</span> <span class="dl">'</span><span class="s1">Guest</span><span class="dl">'</span><span class="p">;</span>
+
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">greeting</span><span class="p">}</span><span class="s2">, </span><span class="p">${</span><span class="nx">user</span><span class="p">}</span><span class="s2">!`</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>In modern JavaScript a default parameter can be defined inside a function declaration parenthesis using <code class="language-plaintext highlighter-rouge">=</code>:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">helloUser</span><span class="p">(</span><span class="nx">greeting</span><span class="p">,</span> <span class="nx">user</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">Guest</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">greeting</span><span class="p">}</span><span class="s2">, </span><span class="p">${</span><span class="nx">user</span><span class="p">}</span><span class="s2">!`</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">helloUser</span><span class="p">(</span><span class="dl">'</span><span class="s1">Hello</span><span class="dl">'</span><span class="p">);</span> <span class="c1">// Hello, Guest!</span>
+</code></pre></div></div>
+
+<p>A default parameter may be a function too:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">getDefaultUser</span><span class="p">()</span> <span class="p">{</span>
+  <span class="cm">/* ... */</span>
+  <span class="k">return</span> <span class="nx">defaultUser</span><span class="p">;</span> <span class="c1">// Whatever we return becomes user's value</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">helloUser</span><span class="p">(</span><span class="nx">greeting</span><span class="p">,</span> <span class="nx">user</span> <span class="o">=</span> <span class="nx">getDefaultUser</span><span class="p">())</span> <span class="p">{</span>
+  <span class="cm">/* ... */</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="calling-functions">Calling Functions</h2>
+
+<p>As mentioned earlier, defining a function does not execute it.</p>
+
+<p>Calling the function is what executes it, and allows us to specify arguments.</p>
+
+<p>To call a function it must be <em>in scope</em>. The <em>scope</em> of a function is the function in which it was declared (or the entire script if declared at the top level.)</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">someFunction</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">function</span> <span class="nx">internalFunction</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Internal function was called</span><span class="dl">'</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="nx">internalFunction</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="nx">someFunction</span><span class="p">();</span> <span class="c1">// Internal function was called</span>
+<span class="nx">internalFunction</span><span class="p">();</span> <span class="c1">// ERROR! Uncaught ReferenceError: internalFunction is not defined</span>
+</code></pre></div></div>
+
+<p>In the example above, <code class="language-plaintext highlighter-rouge">internalFunction()</code> throws an error because it is out of scope.
+Since <code class="language-plaintext highlighter-rouge">internalFunction()</code> was defined inside <code class="language-plaintext highlighter-rouge">someFunction()</code>, its scope is limited to the function body of <code class="language-plaintext highlighter-rouge">someFunction()</code>.</p>
+
+<h2 id="hoisting">Hoisting</h2>
+
+<p>An important difference between <em>function declarations</em> and <em>function expressions</em> is that the former may be <strong><em>hoisted</em></strong> while the latter may not be.</p>
+
+<p><strong>What is function hoisting?</strong></p>
+
+<p>Normally we would define a function before calling it:</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Function is defined</span>
+<span class="kd">function</span> <span class="nx">logMessage</span><span class="p">(</span><span class="nx">msg</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">msg</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// And then called</span>
+<span class="nx">logMessage</span><span class="p">(</span><span class="dl">'</span><span class="s1">Hello there!</span><span class="dl">'</span><span class="p">);</span> <span class="c1">// Hello there! is printed to browser console</span>
+</code></pre></div></div>
+
+<p>However, with the <em>function declaration</em> above we may call it before it is defined without throwing errors:</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">logMessage</span><span class="p">(</span><span class="dl">'</span><span class="s1">Hello there!</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="kd">function</span> <span class="nx">logMessage</span><span class="p">(</span><span class="nx">msg</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">msg</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>This works because the JavaScript interpreter hoists our <em>function definition</em> to the top of our scope.</p>
+
+<p>A similar function expression will cause an error:</p>
+<div class="language-javascript code--wrong highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">logMessage</span><span class="p">(</span><span class="dl">'</span><span class="s1">Hello there!</span><span class="dl">'</span><span class="p">);</span> <span class="c1">// ERROR! Uncaught ReferenceError: logMessage is not defined</span>
+
+<span class="kd">const</span> <span class="nx">logMessage</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">msg</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">msg</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="local-variables">Local Variables</h2>
+
+<p>A variable defined inside a function is only available from within that function and not outside.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">wrapText</span><span class="p">(</span><span class="nx">text</span><span class="p">,</span> <span class="nx">wrapper</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">newText</span> <span class="o">=</span> <span class="nx">wrapper</span> <span class="o">+</span> <span class="nx">text</span> <span class="o">+</span> <span class="nx">wrapper</span><span class="p">;</span>
+
+  <span class="k">return</span> <span class="nx">newText</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">text</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">Hello!</span><span class="dl">'</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">quotedText</span> <span class="o">=</span> <span class="nx">wrapText</span><span class="p">(</span><span class="nx">text</span><span class="p">,</span> <span class="dl">'</span><span class="s1">"</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">quotedText</span><span class="p">);</span> <span class="c1">// "Hello!"</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">newText</span><span class="p">);</span> <span class="c1">// ERROR! ReferenceError: newText is not defined</span>
+</code></pre></div></div>
+
+<h2 id="outer-variables">Outer Variables</h2>
+
+<p>A function may access outer variables if a local variable of the same name does not exist.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">pi</span> <span class="o">=</span> <span class="mf">3.14159</span><span class="p">;</span>
+
+<span class="c1">// A simple function that returns the circumference of a circle where r = radius</span>
+<span class="kd">function</span> <span class="nx">calculateCircumference</span><span class="p">(</span><span class="nx">r</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="mi">2</span> <span class="o">*</span> <span class="nx">r</span> <span class="o">*</span> <span class="nx">pi</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">c</span> <span class="o">=</span> <span class="nx">calculateCircumference</span><span class="p">(</span><span class="mf">0.5</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">c</span><span class="p">);</span> <span class="c1">// 3.14159</span>
+</code></pre></div></div>
+
+<p>As you can see the variable <code class="language-plaintext highlighter-rouge">pi</code> is defined outside the <code class="language-plaintext highlighter-rouge">calculateCircumference()</code> function deceleration.</p>
+
+<p>If <code class="language-plaintext highlighter-rouge">calculateCircumference()</code> defined a local variable named <code class="language-plaintext highlighter-rouge">pi</code> it would use the local variable instead:</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">pi</span> <span class="o">=</span> <span class="mf">3.14159</span><span class="p">;</span>
+
+<span class="kd">function</span> <span class="nx">calculateCircumference</span><span class="p">(</span><span class="nx">r</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">pi</span> <span class="o">=</span> <span class="mf">3.1415926535</span><span class="p">;</span> <span class="c1">// this pi variable is used!</span>
+
+  <span class="k">return</span> <span class="mi">2</span> <span class="o">*</span> <span class="nx">r</span> <span class="o">*</span> <span class="nx">pi</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">c</span> <span class="o">=</span> <span class="nx">calculateCircumference</span><span class="p">(</span><span class="mf">0.5</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">c</span><span class="p">);</span> <span class="c1">// 3.1415926535, used local pi variable - notice the precision!</span>
+</code></pre></div></div>
+
+<h2 id="returning-a-value">Returning a value</h2>
+
+<p>A function may return a value back into the calling code.
+This is accomplished using a <code class="language-plaintext highlighter-rouge">return</code> statement inside the function declaration:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">multiply</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">a</span> <span class="o">*</span> <span class="nx">b</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">multiply</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span> <span class="c1">// 4</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">return</code> also stops execution of a function. This also means that any code after <code class="language-plaintext highlighter-rouge">return [expression];</code> is unreachable
+and won’t be executed.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">someFunc</span><span class="p">()</span> <span class="p">{</span>
+  <span class="cm">/* ... */</span>
+  <span class="k">return</span><span class="p">;</span>
+  <span class="c1">// Unreachable code! This line is ignored completely!</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">This console log will never be executed!</span><span class="dl">'</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">return</code> may be used without returning a value — in which case ot returns <code class="language-plaintext highlighter-rouge">undefined</code>.
+It an be used to interrupt execution of a function early-on which can help with performance.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">someFunction</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">c</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// if c is undefined don't go any further!</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">c</span> <span class="o">===</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="c1">// Main part of someFunction</span>
+  <span class="cm">/* ... */</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+
+      </div>
+    </div>
+  </main>
+      <!-- custom compiled and minified javascript -->
+    <script src="/javascript/assets/js/dist/main.912481246cb8b020dcbd.bundle.js" defer></script>
+
+</body>
+</html>
+

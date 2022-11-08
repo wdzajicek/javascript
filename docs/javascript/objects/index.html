@@ -1,0 +1,693 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Objects | JavaScript</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link rel="manifest" href="/javascript/site.webmanifest">
+  <link rel="apple-touch-icon" href="/javascript/apple-touch-icon.png">
+      <!-- Link to Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Roboto:wght@400;500;700&family=Roboto+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+      
+    <!-- Link to this site's main stylesheet -->
+    <link rel="stylesheet" href="../../assets/js/dist/main.912481246cb8b020dcbd.css">
+    
+
+  <meta name="theme-color" content="#58a6ff">
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg border-bottom border-3">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="../../">JS</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Web APIs
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="../../web">Web APIs</a></li>
+            <li><hr class="dropdown-divider"></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            JavaScript
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="../../javascript">JavaScript</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="../../javascript/functions">Functions</a></li>
+            <li><a class="dropdown-item" href="../../javascript/objects">Objects</a></li>
+            <li><a class="dropdown-item" href="../../javascript/generators">Generators</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  <main class="container mt-3">
+    <div class="row">
+      <div class="col">
+        <h1 id="objects">Objects</h1>
+
+<hr />
+
+<h2 id="contents">Contents</h2>
+
+<ul>
+  <li><a href="#objects">Objects</a>
+    <ul>
+      <li><a href="#contents">Contents</a></li>
+      <li><a href="#the-basics">The Basics</a></li>
+      <li><a href="#property-names">Property Names</a></li>
+      <li><a href="#creating-objects">Creating Objects</a>
+        <ul>
+          <li><a href="#object-literals">Object Literals</a></li>
+          <li><a href="#the-object-constructor">The <code class="language-plaintext highlighter-rouge">Object()</code> Constructor</a></li>
+        </ul>
+      </li>
+      <li><a href="#accessing-properties">Accessing Properties</a>
+        <ul>
+          <li><a href="#dot-notation">Dot Notation</a></li>
+          <li><a href="#bracket-notation">Bracket Notation</a></li>
+        </ul>
+      </li>
+      <li><a href="#deleting-properties">Deleting Properties</a></li>
+      <li><a href="#computed-properties">Computed properties</a></li>
+      <li><a href="#object-methods">Object Methods</a>
+        <ul>
+          <li><a href="#object-method-shorthand">Object Method Shorthand</a></li>
+        </ul>
+      </li>
+      <li><a href="#this-in-property-methods"><code class="language-plaintext highlighter-rouge">this</code> in Property Methods</a></li>
+      <li><a href="#property-value-shorthand">Property Value Shorthand</a></li>
+      <li><a href="#symbols-as-object-keys">Symbols as Object Keys</a></li>
+      <li><a href="#the-in-operator">The <code class="language-plaintext highlighter-rouge">in</code> Operator</a></li>
+      <li><a href="#the-forin-loop">The <code class="language-plaintext highlighter-rouge">for..in</code> Loop</a>
+        <ul>
+          <li><a href="#enumerable-properties">Enumerable Properties</a></li>
+          <li><a href="#inherited-properties">Inherited Properties</a></li>
+        </ul>
+      </li>
+      <li><a href="#object-property-ordering">Object Property Ordering</a></li>
+      <li><a href="#constructor-functions">Constructor Functions</a></li>
+      <li><a href="#objectassign"><code class="language-plaintext highlighter-rouge">Object.assign()</code></a>
+        <ul>
+          <li><a href="#shallow-vs-deep-cloning">Shallow vs. Deep Cloning</a>
+            <ul>
+              <li><a href="#structuredclone-method"><code class="language-plaintext highlighter-rouge">structuredClone()</code> method</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="the-basics">The Basics</h2>
+
+<p>The object is a foundational part of the JavaScript language. In fact, it can be said that everything is an object in JS. Understanding them is essential to having a good understanding of the language.</p>
+
+<p>How is everything an object? Consider the ordinary <code class="language-plaintext highlighter-rouge">array</code> data-type in JavaScript. It is a special object meant for holding a list of values — values that are accessed by an index.</p>
+
+<p>We can demonstrate that an array is an object using javascript itself.</p>
+
+<p>An array has properties just like any other object in JavaScript! For example, all arrays have a <code class="language-plaintext highlighter-rouge">length</code> property:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">];</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">arr</span><span class="p">.</span><span class="nx">length</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>Objects can be created using curly-braces (<code class="language-plaintext highlighter-rouge">{...}</code>) and <strong>may</strong> have a list of properties. An object may also be empty, with no properties at all.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">key</span><span class="p">:</span> <span class="dl">'</span><span class="s1">value</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">anotherKey</span><span class="p">:</span> <span class="kc">true</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<p>A <strong><em>property</em></strong> <em>may</em> be a <code class="language-plaintext highlighter-rouge">"key": value</code> pair. A <code class="language-plaintext highlighter-rouge">key</code>, which must be a string (or a symbol), is also called a <strong><em>property name</em></strong>. The <code class="language-plaintext highlighter-rouge">value</code> can be a string, number, boolean, array, another object, or even a function.</p>
+
+<p>When a property references a function in an object initializer it is called a <strong><em>property method</em></strong>.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">property</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">parameters</span><span class="p">)</span> <span class="p">{</span><span class="cm">/* ... */</span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>There exists a method definition shorthand where the <code class="language-plaintext highlighter-rouge">function</code> keyword can be omitted:</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">obj</span><span class="p">;</span>
+<span class="c1">// the full syntax:</span>
+<span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">property</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">parameters</span><span class="p">)</span> <span class="p">{</span><span class="cm">/* ... */</span><span class="p">}</span>
+<span class="p">};</span>
+<span class="c1">// the equivalent shorthand:</span>
+<span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">property</span><span class="p">(</span><span class="nx">parameters</span><span class="p">)</span> <span class="p">{</span><span class="cm">/* ... */</span><span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<h2 id="property-names">Property Names</h2>
+
+<p>A property name must be either a string or a symbol. Anything else is coerced into a string (e.g. <code class="language-plaintext highlighter-rouge">2</code> becomes <code class="language-plaintext highlighter-rouge">'2'</code>):</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="mi">0</span><span class="p">:</span> <span class="dl">'</span><span class="s1">test</span><span class="dl">'</span> <span class="c1">// JavaScript coerces the 0 into a string '0': 'test'</span>
+<span class="p">}</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">obj</span><span class="p">[</span><span class="dl">'</span><span class="s1">0</span><span class="dl">'</span><span class="p">])</span> <span class="c1">// test</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">obj</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span> <span class="c1">// test, same property b/c 0 is coerced to a string</span>
+</code></pre></div></div>
+
+<p>If a string property name contains a space it must be quoted:</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="dl">'</span><span class="s1">multi word key</span><span class="dl">'</span><span class="p">:</span> <span class="kc">true</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Symbols are used in property keys to guarantee uniqueness. This is ideal when creating code that others will use and manipulate.</p>
+
+<h2 id="creating-objects">Creating Objects</h2>
+
+<p>There are several ways to create an object:</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">obj1</span> <span class="o">=</span> <span class="p">{};</span>
+<span class="kd">let</span> <span class="nx">obj2</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Object</span><span class="p">();</span>
+<span class="kd">let</span> <span class="nx">obj3</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">();</span>
+<span class="kd">let</span> <span class="nx">obj4</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">create</span><span class="p">();</span>
+</code></pre></div></div>
+
+<h3 id="object-literals">Object Literals</h3>
+
+<p>When you immediately define properties inside curly braces (<code class="language-plaintext highlighter-rouge">{...}</code>) it is called an <strong><em>object literal</em></strong>:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">user</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">John</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">age</span><span class="p">:</span> <span class="mi">30</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<p><em>In JavaScript</em>, the coma after the last property of an object is optional:</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">user</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">John</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">age</span><span class="p">:</span> <span class="mi">29</span><span class="p">,</span> <span class="c1">// This coma is optional!</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="the-object-constructor">The <code class="language-plaintext highlighter-rouge">Object()</code> Constructor</h3>
+
+<p>The <code class="language-plaintext highlighter-rouge">Object(value)</code> constructor turns <code class="language-plaintext highlighter-rouge">value</code> into an object — <code class="language-plaintext highlighter-rouge">new</code> is optional:</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">new</span> <span class="nb">Object</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span>
+<span class="nb">Object</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h2 id="accessing-properties">Accessing Properties</h2>
+
+<p>There are two methods for accessing object properties:</p>
+<ul>
+  <li>dot notation</li>
+  <li>bracket notation</li>
+</ul>
+
+<p>Both methods may be used to read, set, or create new properties.</p>
+
+<h3 id="dot-notation">Dot Notation</h3>
+
+<p><strong><em>Dot notation</em></strong> is the shortest but doesn’t work with multi-word keys:</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">user</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">John</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">age</span><span class="p">:</span> <span class="mi">28</span>
+<span class="p">};</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">user</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span> <span class="c1">// John</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">user</span><span class="p">.</span><span class="nx">age</span><span class="p">);</span> <span class="c1">// 28</span>
+</code></pre></div></div>
+
+<p>It can be used to create new properties, or overwrite an existing one too:</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">user</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">John</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">age</span><span class="p">:</span> <span class="mi">27</span>
+<span class="p">};</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">user</span><span class="p">.</span><span class="nx">age</span><span class="p">)</span> <span class="c1">// 27</span>
+
+<span class="nx">user</span><span class="p">.</span><span class="nx">age</span> <span class="o">=</span> <span class="mi">26</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">user</span><span class="p">.</span><span class="nx">age</span><span class="p">);</span> <span class="c1">// 26, it changed!</span>
+
+<span class="nx">user</span><span class="p">.</span><span class="nx">nickname</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">J</span><span class="dl">'</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">user</span><span class="p">.</span><span class="nx">nickname</span><span class="p">);</span> <span class="c1">// J, a new property was created!</span>
+</code></pre></div></div>
+
+<h3 id="bracket-notation">Bracket Notation</h3>
+
+<p>The <strong><em>bracket notation</em></strong> uses the <code class="language-plaintext highlighter-rouge">object[expression]</code> syntax; the <code class="language-plaintext highlighter-rouge">expression</code> should evaluate to a string or symbol.</p>
+
+<p>An object with a multi-word key must use quotation marks and must be accessed using <em>bracket notation</em>:</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">user</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">John</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">age</span><span class="p">:</span> <span class="mi">25</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">is online</span><span class="dl">'</span><span class="p">:</span> <span class="kc">true</span>
+<span class="p">};</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">user</span><span class="p">[</span><span class="dl">'</span><span class="s1">is online</span><span class="dl">'</span><span class="p">]);</span> <span class="c1">// true</span>
+
+<span class="nx">user</span><span class="p">[</span><span class="dl">'</span><span class="s1">is online</span><span class="dl">'</span><span class="p">]</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">user</span><span class="p">[</span><span class="dl">'</span><span class="s1">is online</span><span class="dl">'</span><span class="p">]);</span> <span class="c1">// false</span>
+
+<span class="nx">user</span><span class="p">[</span><span class="dl">'</span><span class="s1">theme</span><span class="dl">'</span><span class="p">]</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">dark-mode</span><span class="dl">'</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">user</span><span class="p">[</span><span class="dl">'</span><span class="s1">theme</span><span class="dl">'</span><span class="p">]);</span> <span class="c1">// dark-mode</span>
+</code></pre></div></div>
+
+<h2 id="deleting-properties">Deleting Properties</h2>
+
+<p>To remove a property we must use the <code class="language-plaintext highlighter-rouge">delete</code> operator:</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">delete</span> <span class="nx">user</span><span class="p">[</span><span class="dl">'</span><span class="s1">is online</span><span class="dl">'</span><span class="p">];</span>
+</code></pre></div></div>
+
+<h2 id="computed-properties">Computed properties</h2>
+
+<p>The bracket notation is more powerful since it allows you to use an <code class="language-plaintext highlighter-rouge">expression</code> inside the brackets.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">fruit</span> <span class="o">=</span> <span class="nx">prompt</span><span class="p">(</span><span class="dl">'</span><span class="s1">What type of fruit?</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">apple</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="kd">let</span> <span class="nx">bag</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="p">[</span><span class="nx">fruit</span><span class="p">]:</span> <span class="mi">5</span> <span class="c1">// name of property is computed from fruit variable</span>
+<span class="p">};</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">bag</span><span class="p">.</span><span class="nx">apple</span><span class="p">);</span> <span class="c1">// 5, if fruit=apple</span>
+</code></pre></div></div>
+
+<p>An expression may be used inside square brackets of an object literal too:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">fruit</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">apple</span><span class="dl">'</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">bag</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="p">[</span><span class="nx">fruit</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">Computers</span><span class="dl">'</span><span class="p">]:</span> <span class="mi">5</span>
+<span class="p">};</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">bag</span><span class="p">.</span><span class="nx">appleComputers</span><span class="p">);</span> <span class="c1">// 5</span>
+</code></pre></div></div>
+
+<h2 id="object-methods">Object Methods</h2>
+
+<p>Objects are capable of doing more than holding <code class="language-plaintext highlighter-rouge">key: 'value'</code> pairs. 
+Object methods are properties that store a function.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">user</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Bob</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">logHello</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Hello!</span><span class="dl">'</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">user</span><span class="p">.</span><span class="nx">logHello</span><span class="p">();</span> <span class="c1">// Hello!</span>
+</code></pre></div></div>
+
+<h3 id="object-method-shorthand">Object Method Shorthand</h3>
+
+<p>There’s a shorter way of creating methods in object literals:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">user</span><span class="p">;</span>
+
+<span class="nx">user</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Bob</span><span class="dl">'</span><span class="p">,</span>
+
+  <span class="na">logHello</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Hello!</span><span class="dl">'</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// This user does the same thing:</span>
+<span class="nx">user</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Bob</span><span class="dl">'</span><span class="p">,</span>
+  <span class="c1">// No function keyword</span>
+  <span class="nx">logHello</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Hello!</span><span class="dl">'</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">user</span><span class="p">.</span><span class="nx">logHello</span><span class="p">();</span> <span class="c1">// Hello!</span>
+</code></pre></div></div>
+
+<h2 id="this-in-property-methods"><code class="language-plaintext highlighter-rouge">this</code> in Property Methods</h2>
+
+<p>Whenever you need to reference an object inside its own method, you should always use <code class="language-plaintext highlighter-rouge">this</code>.</p>
+
+<p>Do not attempt to reference the object using its outer variable.
+Doing so is technically valid JavaScript but is brittle code prone to future error:</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">user</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">John</span><span class="dl">'</span><span class="p">,</span>
+
+  <span class="nx">logHello</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`Hello, </span><span class="p">${</span><span class="nx">user</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="s2">!`</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+<span class="kd">let</span> <span class="nx">admin</span> <span class="o">=</span> <span class="nx">user</span><span class="p">;</span>
+
+<span class="nx">user</span><span class="p">.</span><span class="nx">logHello</span><span class="p">();</span> <span class="c1">// Hello, John!</span>
+<span class="nx">user</span> <span class="o">=</span> <span class="p">{};</span> <span class="c1">// If we overwrite user the original reference is broken!</span>
+<span class="nx">admin</span><span class="p">.</span><span class="nx">logHello</span><span class="p">();</span> <span class="c1">// TypeError: Cannot read property 'name' of null</span>
+</code></pre></div></div>
+
+<p>Instead, an object method should reference itself using the <code class="language-plaintext highlighter-rouge">this</code> keyword:</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">user</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">John</span><span class="dl">'</span><span class="p">,</span>
+
+  <span class="nx">logHello</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`Hello, </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="s2">!`</span><span class="p">);</span> <span class="c1">// this.name not user.name!</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nx">admin</span> <span class="o">=</span> <span class="nx">user</span><span class="p">;</span>
+
+<span class="nx">user</span><span class="p">.</span><span class="nx">logHello</span><span class="p">();</span> <span class="c1">// Hello, John!</span>
+<span class="nx">user</span> <span class="o">=</span> <span class="p">{};</span> <span class="c1">// Overwrite user again</span>
+<span class="nx">admin</span><span class="p">.</span><span class="nx">logHello</span><span class="p">()</span> <span class="c1">// Hello, John!</span>
+</code></pre></div></div>
+
+<h2 id="property-value-shorthand">Property Value Shorthand</h2>
+
+<p>Existing variables are often used for property names:</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">makeUser</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">age</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="na">name</span><span class="p">:</span> <span class="nx">name</span><span class="p">,</span>
+    <span class="na">age</span><span class="p">:</span> <span class="nx">age</span><span class="p">,</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nx">user</span> <span class="o">=</span> <span class="nx">makeUser</span><span class="p">(</span><span class="dl">'</span><span class="s1">John</span><span class="dl">'</span><span class="p">,</span> <span class="mi">24</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">user</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span> <span class="c1">// John</span>
+</code></pre></div></div>
+
+<p>Instead of <code class="language-plaintext highlighter-rouge">name: name</code> and <code class="language-plaintext highlighter-rouge">age: age</code> we can use the property value shorthand:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">makeUser</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">age</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="nx">name</span><span class="p">,</span>
+    <span class="nx">age</span><span class="p">,</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nx">user</span> <span class="o">=</span> <span class="nx">makeUser</span><span class="p">(</span><span class="dl">'</span><span class="s1">John</span><span class="dl">'</span><span class="p">,</span> <span class="mi">23</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">user</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span> <span class="c1">// John</span>
+</code></pre></div></div>
+
+<h2 id="symbols-as-object-keys">Symbols as Object Keys</h2>
+
+<p>@TODO</p>
+
+<h2 id="the-in-operator">The <code class="language-plaintext highlighter-rouge">in</code> Operator</h2>
+
+<p>In JavaScript, trying to access a non-existent property on an object does not cause an error. It returns <code class="language-plaintext highlighter-rouge">undefined</code> instead.</p>
+
+<p>To test for the existence of a property use the <code class="language-plaintext highlighter-rouge">in</code> operator:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="dl">"</span><span class="s2">key</span><span class="dl">"</span> <span class="k">in</span> <span class="nx">object</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">user</span> <span class="o">=</span> <span class="p">{</span> <span class="na">nickname</span><span class="p">:</span> <span class="dl">'</span><span class="s1">J</span><span class="dl">'</span> <span class="p">};</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">nickname</span><span class="dl">'</span> <span class="k">in</span> <span class="nx">user</span><span class="p">);</span> <span class="c1">// true (either true or false)</span>
+</code></pre></div></div>
+
+<h2 id="the-forin-loop">The <code class="language-plaintext highlighter-rouge">for..in</code> Loop</h2>
+
+<p>To iterate over all an objects <em>enumerable properties</em>, JavaScript has the <code class="language-plaintext highlighter-rouge">for..in</code> loop:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">user</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">John</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">age</span><span class="p">:</span> <span class="mi">22</span><span class="p">,</span>
+  <span class="na">isAdmin</span><span class="p">:</span> <span class="kc">true</span>
+<span class="p">};</span>
+
+<span class="k">for</span> <span class="p">(</span><span class="kd">const</span> <span class="nx">key</span> <span class="k">in</span> <span class="nx">user</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`[key]: </span><span class="p">${</span><span class="nx">key</span><span class="p">}</span><span class="s2"> [value]: </span><span class="p">${</span><span class="nx">user</span><span class="p">[</span><span class="nx">key</span><span class="p">]}</span><span class="s2">`</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="c1">// [key]: name [value]: 'John'</span>
+<span class="c1">// [key]: age [value]: 22</span>
+<span class="c1">// [key]: isAdmin [value]: true</span>
+</code></pre></div></div>
+
+<h3 id="enumerable-properties">Enumerable Properties</h3>
+
+<p>What is an <strong><em>enumerable property</em></strong>?</p>
+
+<p>An enumerable property is one that participates in looping methods like <code class="language-plaintext highlighter-rouge">for..in</code> and <code class="language-plaintext highlighter-rouge">Object.keys()</code>.</p>
+
+<p>All properties created in object initialization, and those assigned afterward (e.g. using dot or bracket notation,) are enumerable by default:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">user</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">John</span><span class="dl">'</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="nx">user</span><span class="p">.</span><span class="nx">age</span> <span class="o">=</span> <span class="mi">21</span><span class="p">;</span>
+<span class="nx">user</span><span class="p">[</span><span class="dl">'</span><span class="s1">isAdmin</span><span class="dl">'</span><span class="p">]</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+
+<span class="k">for</span> <span class="p">(</span><span class="kd">const</span> <span class="nx">key</span> <span class="k">in</span> <span class="nx">user</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">user</span><span class="p">[</span><span class="nx">key</span><span class="p">]);</span> <span class="c1">// 'John', 21, false</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="inherited-properties">Inherited Properties</h3>
+
+<p>The <code class="language-plaintext highlighter-rouge">for..in</code> loop will also iterate over inherited enumerable properties (properties defined on the objects’ <code class="language-plaintext highlighter-rouge">prototype</code>.)</p>
+
+<p>If you are creating a simple object literal in your own code, looping over inherited properties is usually not a problem.</p>
+
+<p>If you start using methods that manipulate an objects’ prototype, however, you may start getting inherited properties.</p>
+
+<p>To avoid including inherited properties, use <code class="language-plaintext highlighter-rouge">object.hasOwnProperty(key)</code> in the loop:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="p">(</span><span class="kd">const</span> <span class="nx">key</span> <span class="k">in</span> <span class="nx">object</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">object</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="nx">key</span><span class="p">))</span> <span class="p">{</span>
+    <span class="cm">/* ... */</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>There is a replacement for <code class="language-plaintext highlighter-rouge">object.hasOwnProperty(key)</code> that developers are encouraged to use, <strong>however, there is little browser support for it at the time of writing this.</strong></p>
+
+<p>It is <code class="language-plaintext highlighter-rouge">Object.hasOwn(object, key)</code> where <code class="language-plaintext highlighter-rouge">object</code> is the object to test and <code class="language-plaintext highlighter-rouge">key</code> is the property being checked for. It will return <code class="language-plaintext highlighter-rouge">true</code> for properties that exist in the object and <code class="language-plaintext highlighter-rouge">false</code> for non-existent properties or inherited properties:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="p">(</span><span class="kd">const</span> <span class="nx">key</span> <span class="k">in</span> <span class="nx">object</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nb">Object</span><span class="p">.</span><span class="nx">hasOwn</span><span class="p">(</span><span class="nx">object</span><span class="p">,</span> <span class="nx">key</span><span class="p">))</span> <span class="p">{</span>
+    <span class="cm">/* ... */</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><a href="https://github.com/zloirock/core-js#ecmascript-object">Core-js</a> has a polyfill enabling you to use <code class="language-plaintext highlighter-rouge">Object.hasOwn()</code> with more browser support.</p>
+
+<h2 id="object-property-ordering">Object Property Ordering</h2>
+
+<p>Object properties are ordered. If we loop over an object the properties will be returned in a specific order. What determines this order?</p>
+
+<p>Integer properties are sorted, while others appear in creation order.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="mi">2</span><span class="p">:</span> <span class="dl">'</span><span class="s1">two</span><span class="dl">'</span><span class="p">,</span>
+  <span class="mi">1</span><span class="p">:</span> <span class="dl">'</span><span class="s1">one</span><span class="dl">'</span><span class="p">,</span>
+  <span class="mi">3</span><span class="p">:</span> <span class="dl">'</span><span class="s1">three</span><span class="dl">'</span>
+<span class="p">};</span>
+
+<span class="k">for</span> <span class="p">(</span><span class="kd">const</span> <span class="nx">key</span> <span class="k">in</span> <span class="nx">obj</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">key</span><span class="p">);</span> <span class="c1">// 1, 2, 3 - they're sorted!</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="constructor-functions">Constructor Functions</h2>
+
+<p>Constructor functions are regular functions. They are reuseable code for creating new objects.</p>
+
+<p>There are two conventions to follow:</p>
+<ol>
+  <li>The first letter in the name is capitalized</li>
+  <li>They should only be executed with the <code class="language-plaintext highlighter-rouge">new</code> operator</li>
+</ol>
+
+<p>The capitalization of the first letter in the constructor functions name is not required. However, it is a commonly agreed upon convention that indicates the function should be called using <code class="language-plaintext highlighter-rouge">new</code>.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">User</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">isAdmin</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nx">user</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">User</span><span class="p">(</span><span class="dl">'</span><span class="s1">Jacob</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">user</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span> <span class="c1">// Jacob</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">user</span><span class="p">.</span><span class="nx">isAdmin</span><span class="p">);</span> <span class="c1">// false</span>
+</code></pre></div></div>
+
+<p>What’s happening inside the constructor function?</p>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">new</code> causes an new empty object to be created and assigned to <code class="language-plaintext highlighter-rouge">this</code></li>
+  <li>The function body executes which usually modifies <code class="language-plaintext highlighter-rouge">this</code> in some way (i.e. adding or changing properties)</li>
+  <li><code class="language-plaintext highlighter-rouge">this</code> is returned.</li>
+</ol>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">User</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// 1. this = {}</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span> <span class="c1">// 2. this.name = 'Jacob'</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">isAdmin</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span> <span class="c1">// this.isAdmin = false</span>
+  <span class="c1">// 3. return this; is implied</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nx">user</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">User</span><span class="p">(</span><span class="dl">'</span><span class="s1">Jacob</span><span class="dl">'</span><span class="p">);</span> <span class="c1">// new is called and name=Jacob</span>
+</code></pre></div></div>
+
+<p><em><strong>Arrow functions may not be used as a constructor</strong> because they do not have <code class="language-plaintext highlighter-rouge">this</code>.</em></p>
+
+<h2 id="objectassign"><code class="language-plaintext highlighter-rouge">Object.assign()</code></h2>
+
+<p>Copying an object variable creates another reference to the same object — it doesn’t create a new object:</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">user</span> <span class="o">=</span> <span class="p">{</span> <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">John</span><span class="dl">'</span> <span class="p">};</span>
+<span class="kd">let</span> <span class="nx">admin</span> <span class="o">=</span> <span class="nx">user</span><span class="p">;</span> <span class="c1">// admin references the same object</span>
+
+<span class="nx">admin</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">Jacob</span><span class="dl">'</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">user</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span> <span class="c1">// 'Jacob', user.name was changed too!</span>
+</code></pre></div></div>
+
+<p>You could manually iterate over each property in a loop and assigning them to a new object that functions as the clone.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">user</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">John</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">age</span><span class="p">:</span> <span class="mi">19</span>
+<span class="p">};</span>
+<span class="kd">let</span> <span class="nx">clone</span> <span class="o">=</span> <span class="p">{};</span>
+
+<span class="k">for</span> <span class="p">(</span><span class="kd">const</span> <span class="nx">key</span> <span class="k">in</span> <span class="nx">user</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">clone</span><span class="p">.</span><span class="nx">key</span> <span class="o">=</span> <span class="nx">user</span><span class="p">.</span><span class="nx">key</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>This creates code that is far more complex than it needs to be.</p>
+
+<p>Instead, the <code class="language-plaintext highlighter-rouge">Object.assign()</code> method can simplify things. It takes properties from one or more objects and adds them to a <code class="language-plaintext highlighter-rouge">target</code> object:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">Object</span><span class="p">.</span><span class="nx">assign</span><span class="p">(</span><span class="nx">target</span><span class="p">,</span> <span class="p">...</span><span class="nx">sources</span><span class="p">);</span>
+</code></pre></div></div>
+<ul>
+  <li>The <code class="language-plaintext highlighter-rouge">target</code> object receives the copied properties.</li>
+  <li><code class="language-plaintext highlighter-rouge">..sources</code> are one or more source objects with the properties you want to copy.</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">target</span> <span class="o">=</span> <span class="p">{</span> <span class="na">a</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="na">c</span><span class="p">:</span> <span class="mi">3</span> <span class="p">};</span>
+<span class="c1">// duplicate props are replaced by the most recently added</span>
+<span class="kd">const</span> <span class="nx">source</span> <span class="o">=</span> <span class="p">{</span> <span class="na">b</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="na">c</span><span class="p">:</span> <span class="mi">1</span> <span class="p">};</span>
+<span class="kd">const</span> <span class="nx">modifiedTarget</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">assign</span><span class="p">(</span><span class="nx">target</span><span class="p">,</span> <span class="nx">source</span><span class="p">);</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">target</span><span class="p">);</span>         <span class="c1">// { a: 1, b: 2, c: 1 }</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">modifiedTarget</span><span class="p">);</span> <span class="c1">// { a: 1, b: 2, c: 1 }, same thing</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">target</span> <span class="o">===</span> <span class="nx">modifiedTarget</span><span class="p">);</span> <span class="c1">// true</span>
+</code></pre></div></div>
+
+<p>Notice how <code class="language-plaintext highlighter-rouge">target</code> and <code class="language-plaintext highlighter-rouge">source</code> both have a property named <code class="language-plaintext highlighter-rouge">c</code>.</p>
+
+<p>If the <code class="language-plaintext highlighter-rouge">target</code> and <code class="language-plaintext highlighter-rouge">source</code> object use the same key, the <code class="language-plaintext highlighter-rouge">target</code> property will be overwitten by the <code class="language-plaintext highlighter-rouge">source</code> property.</p>
+
+<p>Sometimes you will see code where an new empty object is created inside the <code class="language-plaintext highlighter-rouge">Object.assign()</code> call:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span> <span class="na">a</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="na">b</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="na">c</span><span class="p">:</span> <span class="mi">3</span> <span class="p">};</span>
+<span class="kd">let</span> <span class="nx">clone</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">assign</span><span class="p">({},</span> <span class="nx">obj</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h3 id="shallow-vs-deep-cloning">Shallow vs. Deep Cloning</h3>
+
+<p>As mentioned in <a href="#overview">Overview</a> above, an object property can store many things including another object:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">user</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Bob</span><span class="dl">'</span><span class="p">,</span>
+  <span class="c1">// image is another object with its own properties!</span>
+  <span class="na">image</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">src</span><span class="p">:</span> <span class="dl">'</span><span class="s1">assets/img/some-icon.png</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">height</span><span class="p">:</span> <span class="mi">300</span><span class="p">,</span>
+    <span class="na">width</span><span class="p">:</span> <span class="mi">300</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">Object.assign()</code> method is only capable of making a <strong><em>shallow clone</em></strong> — it cannot clone <em>nested objects</em>:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">user</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Bob</span><span class="dl">'</span><span class="p">,</span>
+  <span class="c1">// image is another object with its own properties!</span>
+  <span class="na">image</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">src</span><span class="p">:</span> <span class="dl">'</span><span class="s1">/assets/img/some-icon.png</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">height</span><span class="p">:</span> <span class="mi">300</span><span class="p">,</span>
+    <span class="na">width</span><span class="p">:</span> <span class="mi">300</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nx">clone</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">assign</span><span class="p">({},</span> <span class="nx">user</span><span class="p">);</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">user</span><span class="p">.</span><span class="nx">image</span> <span class="o">===</span> <span class="nx">clone</span><span class="p">.</span><span class="nx">image</span><span class="p">);</span> <span class="c1">// true, it's the same object!</span>
+<span class="nx">clone</span><span class="p">.</span><span class="nx">image</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">/uploads/icon.png</span><span class="dl">'</span><span class="p">;</span> <span class="c1">// change the clone</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">user</span><span class="p">.</span><span class="nx">image</span><span class="p">.</span><span class="nx">src</span><span class="p">);</span> <span class="c1">// '/uploads/icon.png', changes the original</span>
+</code></pre></div></div>
+
+<h4 id="structuredclone-method"><code class="language-plaintext highlighter-rouge">structuredClone()</code> method</h4>
+
+<p>The global <code class="language-plaintext highlighter-rouge">structuredClone(object)</code> method is capable of copying nested properties or creating a <strong><em>deep clone</em></strong> or <strong><em>structured clone</em></strong>.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">user</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Bob</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">image</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">src</span><span class="p">:</span> <span class="dl">'</span><span class="s1">/assets/img/some-icon.png</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">height</span><span class="p">:</span> <span class="mi">300</span><span class="p">,</span>
+    <span class="na">width</span><span class="p">:</span> <span class="mi">300</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nx">clone</span> <span class="o">=</span> <span class="nx">structuredClone</span><span class="p">(</span><span class="nx">user</span><span class="p">);</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">user</span><span class="p">.</span><span class="nx">image</span> <span class="o">===</span> <span class="nx">clone</span><span class="p">.</span><span class="nx">image</span><span class="p">);</span> <span class="c1">// false, it's a new object!</span>
+<span class="nx">clone</span><span class="p">.</span><span class="nx">image</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">/uploads/icon.png</span><span class="dl">'</span><span class="p">;</span> <span class="c1">// change the clone</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">user</span><span class="p">.</span><span class="nx">image</span><span class="p">.</span><span class="nx">src</span><span class="p">);</span> <span class="c1">// '/assets/img/some-icon.png', unchanged!</span>
+</code></pre></div></div>
+
+<p><em>Unfortunately, <code class="language-plaintext highlighter-rouge">structuredClone()</code> does not support function properties and will throw an error!</em></p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">user</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Bob</span><span class="dl">'</span><span class="p">,</span>
+
+  <span class="nx">sayHello</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`Hello, </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nx">clone</span> <span class="o">=</span> <span class="nx">structuredClone</span><span class="p">(</span><span class="nx">user</span><span class="p">);</span> <span class="c1">// Error!</span>
+<span class="cm">/* 
+  Uncaught DOMException: 
+  Failed to execute 'structuredClone' on 'Window': sayHello() {
+    console.log(`Hello, ${this.name}`);
+  } could not be cloned.
+    at &lt;anonymous&gt;:9:13 
+*/</span>
+</code></pre></div></div>
+
+<p>To handle complex cases where you have nested objects and function properties you may need to implement your own deep clone.</p>
+
+<p>Or, you can use an existing  implementation like lodash’s <code class="language-plaintext highlighter-rouge">_.cloneDeep(object)</code>.</p>
+
+<p>Unfortunately, JavaScript does not yet have a method for deep cloning that can handle function properties.</p>
+
+<hr />
+
+
+      </div>
+    </div>
+  </main>
+      <!-- custom compiled and minified javascript -->
+    <script src="/javascript/assets/js/dist/main.912481246cb8b020dcbd.bundle.js" defer></script>
+
+</body>
+</html>
+
