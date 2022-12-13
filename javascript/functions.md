@@ -320,8 +320,8 @@ function someFunc() {
 }
 ```
 
-`return` may be used without returning a value &mdash; in which case ot returns `undefined`.
-It an be used to interrupt execution of a function early-on which can help with performance.
+`return` may be used without a value &mdash; in which case it returns `undefined`.
+It can be used to interrupt execution of a function early-on which prevents executing unnecessary code.
 
 ```javascript
 function someFunction(a, b, c) {

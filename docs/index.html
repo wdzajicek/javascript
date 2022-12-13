@@ -6,14 +6,14 @@
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
-  <link rel="manifest" href="/javascript/site.webmanifest">
-  <link rel="apple-touch-icon" href="/javascript/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
       <!-- Link to Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Roboto:wght@400;500;700&family=Roboto+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Roboto:wght@300;400;500;700&family=Roboto+Mono:wght@400;600&display=swap" rel="stylesheet">
 
       
     <!-- Link to this site's main stylesheet -->
-    <link rel="stylesheet" href="assets/js/dist/main.912481246cb8b020dcbd.css">
+    <link rel="stylesheet" href="assets/js/dist/main.1963778d6d5714eec13e.css">
     
 
   <meta name="theme-color" content="#58a6ff">
@@ -22,21 +22,18 @@
 
   <nav class="navbar navbar-expand-lg border-bottom border-3">
   <div class="container-fluid">
-    <a class="navbar-brand" href="">JS</a>
+    <a class="navbar-brand" href="">
+      <img
+        src="assets/img/icon.png"
+        height="75"
+        width="75"
+        alt="JS">
+    </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Web APIs
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="web">Web APIs</a></li>
-            <li><hr class="dropdown-divider"></li>
-          </ul>
-        </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             JavaScript
@@ -47,6 +44,27 @@
             <li><a class="dropdown-item" href="javascript/functions">Functions</a></li>
             <li><a class="dropdown-item" href="javascript/objects">Objects</a></li>
             <li><a class="dropdown-item" href="javascript/generators">Generators</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Web APIs
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="web">Web APIs</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="web/intersection-observer">Intersection Observer</a></li>
+            <li><a class="dropdown-item" href="web/nodeiterator-treewalker">NodeIterator & TreeWalker</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Node.js
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="nodejs">Node.js</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="nodejs">File System <code class="code code--bg">fs</code></a></li>
           </ul>
         </li>
       </ul>
@@ -72,17 +90,20 @@ language …</p>
 <p class="lead">What does this mean?</p>
 
 <ul>
-  <li><strong>just-in-time (JIT) compiled</strong>, also known as run-time compilation, means that the code is compiled just prior to execution.</li>
-  <li><strong>first-class functions</strong> means that a language is capable of using functions like any other variable; they can be assigned, passed, returned, even placed inside an array.</li>
+  <li><strong>just-in-time (JIT) compiled</strong>, also known as run-time compilation, means that the code is compiled just prior to  execution.</li>
+  <li><strong>first-class functions</strong> means that a language is capable of using functions like any other variable; they can be assigned, passed, returned, even placed inside an array or object.</li>
   <li><strong>prototype-based</strong> programing languages are those where <em>behavior reuse</em> (or inheritance) is achieved through the reuse of existing objects — objects which serve as prototypes.</li>
   <li><strong>single-threaded</strong> means that JavaScrip runs on the browsers’ main thread. This also means that performance matters.</li>
 </ul>
 
 <p>JavaScript by itself doesn’t do anything; it must be run with a JavaScript engine.
-V8 is the most common JavaScript engine developed by Google.
-Browsers use a JavaScript engine to compile and execute JavaScript.</p>
+V8 is the most common JavaScript engine and is developed by Google.</p>
 
-<p>The browser isn’t the only environment that can run JavaScript.</p>
+<p>JavaScript also needs a place to be executed, which usually includes certain global variables and methods (for logging and other common tasks.) This is known as a <strong><em>runtime environment.</em></strong> Internet browsers use a JavaScript engine (most commonly V8) to compile and execute JavaScript. Browsers have a global <code class="language-plaintext highlighter-rouge">window</code> variable with properties like <code class="language-plaintext highlighter-rouge">console</code>, <code class="language-plaintext highlighter-rouge">alert</code>, <code class="language-plaintext highlighter-rouge">location</code>, and many more.</p>
+
+<p>The browser used to be the only JavaScript runtime environment — until the Node was created.</p>
+
+<p><br /></p>
 
 <h2 id="nodejs">Node.js</h2>
 
@@ -95,10 +116,10 @@ It executes JavaScript outside a web browser.</p>
   <p class="text-end">— Me</p>
 </blockquote>
 
-<p>Yes, Node.js is just JavaScript with some extra features for working with your operating system and file storage.
+<p>Yes, Node.js is just JavaScript with some extra features for working with servers. Instead of browser methods, Node has methods for working with a server’s file storage, network, databases and more.
 If you already know javascript then Node.js should be a piece of cake.</p>
 
-<p>Node.js is a common server environment that allows a developer to interact with a server using JavaScript.</p>
+<p><br /></p>
 
 <h2 id="javascript-vs-web-apis">JavaScript vs. Web APIs</h2>
 
@@ -120,8 +141,23 @@ Purely JavaScript code is not capable of interacting with a webpage; there are n
       </div>
     </div>
   </main>
+  <footer class="mt-5 border-top border-3">
+  <div class="container py-5">
+    <div class="row">
+      <div class="col px-5">
+        <h5>
+          <a href="/">
+            JS
+          </a>
+        </h5>
+        <p>&copy; 2022 Wesley Zajicek</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
       <!-- custom compiled and minified javascript -->
-    <script src="/javascript/assets/js/dist/main.912481246cb8b020dcbd.bundle.js" defer></script>
+    <script src="/assets/js/dist/main.1963778d6d5714eec13e.bundle.js" defer></script>
 
 </body>
 </html>

@@ -62,8 +62,12 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  .border-bottom {
-    border-bottom-color: rgba(255, 255,255, .25) !important;
+  .border-bottom,
+  .border-top,
+  .border-start,
+  .border-end,
+  .border {
+    border-color: rgba(255, 255,255, .25) !important;
   }
   .dropdown-divider {
     border-color: rgba(255, 255,255, .5) !important;

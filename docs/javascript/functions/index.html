@@ -6,14 +6,14 @@
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
-  <link rel="manifest" href="/javascript/site.webmanifest">
-  <link rel="apple-touch-icon" href="/javascript/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
       <!-- Link to Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Roboto:wght@400;500;700&family=Roboto+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Roboto:wght@300;400;500;700&family=Roboto+Mono:wght@400;600&display=swap" rel="stylesheet">
 
       
     <!-- Link to this site's main stylesheet -->
-    <link rel="stylesheet" href="../../assets/js/dist/main.912481246cb8b020dcbd.css">
+    <link rel="stylesheet" href="../../assets/js/dist/main.1963778d6d5714eec13e.css">
     
 
   <meta name="theme-color" content="#58a6ff">
@@ -22,21 +22,18 @@
 
   <nav class="navbar navbar-expand-lg border-bottom border-3">
   <div class="container-fluid">
-    <a class="navbar-brand" href="../../">JS</a>
+    <a class="navbar-brand" href="../../">
+      <img
+        src="../../assets/img/icon.png"
+        height="75"
+        width="75"
+        alt="JS">
+    </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Web APIs
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="../../web">Web APIs</a></li>
-            <li><hr class="dropdown-divider"></li>
-          </ul>
-        </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             JavaScript
@@ -47,6 +44,27 @@
             <li><a class="dropdown-item" href="../../javascript/functions">Functions</a></li>
             <li><a class="dropdown-item" href="../../javascript/objects">Objects</a></li>
             <li><a class="dropdown-item" href="../../javascript/generators">Generators</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Web APIs
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="../../web">Web APIs</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="../../web/intersection-observer">Intersection Observer</a></li>
+            <li><a class="dropdown-item" href="../../web/nodeiterator-treewalker">NodeIterator & TreeWalker</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Node.js
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="../../nodejs">Node.js</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="../../nodejs">File System <code class="code code--bg">fs</code></a></li>
           </ul>
         </li>
       </ul>
@@ -366,8 +384,8 @@ and won’t be executed.</p>
 <span class="p">}</span>
 </code></pre></div></div>
 
-<p><code class="language-plaintext highlighter-rouge">return</code> may be used without returning a value — in which case ot returns <code class="language-plaintext highlighter-rouge">undefined</code>.
-It an be used to interrupt execution of a function early-on which can help with performance.</p>
+<p><code class="language-plaintext highlighter-rouge">return</code> may be used without a value — in which case it returns <code class="language-plaintext highlighter-rouge">undefined</code>.
+It can be used to interrupt execution of a function early-on which prevents executing unnecessary code.</p>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">someFunction</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">c</span><span class="p">)</span> <span class="p">{</span>
   <span class="c1">// if c is undefined don't go any further!</span>
@@ -384,8 +402,23 @@ It an be used to interrupt execution of a function early-on which can help with 
       </div>
     </div>
   </main>
+  <footer class="mt-5 border-top border-3">
+  <div class="container py-5">
+    <div class="row">
+      <div class="col px-5">
+        <h5>
+          <a href="/">
+            JS
+          </a>
+        </h5>
+        <p>&copy; 2022 Wesley Zajicek</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
       <!-- custom compiled and minified javascript -->
-    <script src="/javascript/assets/js/dist/main.912481246cb8b020dcbd.bundle.js" defer></script>
+    <script src="/assets/js/dist/main.1963778d6d5714eec13e.bundle.js" defer></script>
 
 </body>
 </html>

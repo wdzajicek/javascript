@@ -18,15 +18,16 @@ baseurl: ../../
     - [Constructor](#constructor)
     - [Generator Methods](#generator-methods)
       - [`Generator.prototype.next()`](#generatorprototypenext)
+      - [`Generator.prototype.return()`](#generatorprototypereturn)
   - [Iterating Over Generators](#iterating-over-generators)
 
 ## Overview
 
 A normal JS function can return a single value, or nothing at all.
 
-Generators can return (or `yield`) multiple values, one after another, and on-demand (i.e. jump out and back into the loop.)
+But what if we need to return multiple values?
 
-One good application for using generators, along with iterables, is creating a data-stream.
+Generators can return (or `yield`) multiple values, one after another, and on-demand (i.e. jump out and back into the loop.)
 
 ## Generator Functions
 
@@ -53,7 +54,7 @@ function* generateSequence() {
 
 // "generator" function creates "generator object"
 let generator = generateSequence();
-console.log(generator); // [object Generator]
+console.log(generator.toString()); // [object Generator]
 ```
 
 ### Constructor
@@ -78,12 +79,12 @@ let generator = generateSequence();
 
 Calling `next()` on a generator function does the following:
 1. Execution runs until the nearest `yield` statement.
-2. The yielded value is returned to the outer code.
+2. The yielded value is returned to the outer code (where `.next()` was called.)
 
 The `yield` statement may return a `value` (`yield <value>`,) or
 if omitted, returns `undefined`.
 
-`next()` will always return an object with two values:
+`next()` will always returns an object with two values:
 - `value`: which is set to the yielded value (or undefined)
 - `done`: which is either `true` (indicating the function has finished,) or `false` indicating that there is more to yield.
 
@@ -94,7 +95,6 @@ function* generateSequence() {
   return 3;
 }
 
-// "generator" function creates "generator object"
 let generator = generateSequence();
 let one = generator.next();
 let two = generator.next();
@@ -105,9 +105,50 @@ console.log(JSON.stringify(two)); // { value: 2, done: false }
 console.log(JSON.stringify(three)); // { value: 3, done: true }
 ```
 
+If an argument is supplied to `.next()` it becomes the yielded value returned by the generator.
+
+```javascript
+function* generateSequence() {
+  yield 1;
+  yield 2;
+  yield 3;
+}
+
+let generator = generateSequence();
+let one = generator.next();
+let next = generator.next('newValue');
+
+console.log(JSON.stringify(one)); // { value: 1, done: false }
+console.log(JSON.stringify(next)); // { value: 'newValue' , done: false }
+```
+
+#### `Generator.prototype.return()`
+
+The `Generator.prototype.return()` method causes the generator to act as if 
+a `return` statement were inserted into the generator function's current position.
+
+If an argument is supplied (`.return(<value>)`,) it becomes the value returned by the generator.
+
+```javascript
+function* generateSequence() {
+  yield 1;
+  yield 2;
+  yield 3;
+}
+
+let generator = generateSequence();
+let one = generator.next();
+let stop = generator.return('stop');
+let three = generator.next();
+
+console.log(JSON.stringify(one)); // { value: 1, done: false }
+console.log(JSON.stringify(stop)); // { value: 'stop' , done: true }
+console.log(JSON.stringify(three)); // { value: undefined, done: true }
+```
+
 ## Iterating Over Generators
 
-Use `for..of`:
+Use `for..of` to iterate over a generator:
 
 ```javascript
 function* generateSequence() {

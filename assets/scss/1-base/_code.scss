@@ -1,3 +1,9 @@
+.code {
+  font-size: 1rem;
+  color: $color-code-default;
+  word-wrap: break-word;
+}
+
 .code--bg {
   background-color: #000;
   border-radius: 5px;

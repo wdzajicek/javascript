@@ -39,7 +39,7 @@ baseurl: ../../
 
 ## The Basics
 
-The object is a foundational part of the JavaScript language. In fact, it can be said that everything is an object in JS. Understanding them is essential to having a good understanding of the language.
+The object is a foundational part of the JavaScript language. In fact, it can be said that almost everything is an object in JS. Understanding them is essential to having a good understanding of the language.
 
 How is everything an object? Consider the ordinary `array` data-type in JavaScript. It is a special object meant for holding a list of values &mdash; values that are accessed by an index.
 

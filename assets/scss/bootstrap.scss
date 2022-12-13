@@ -23,6 +23,7 @@ $headings-font-family: $font-family-headings;
 $dropdown-border-width: 2px;
 $dropdown-divider-width: 2px;
 
+$code-font-size: 1em;
 $code-color: $color-green-pure;
 
 // 3. Include remainder of required Bootstrap stylesheets
@@ -48,6 +49,7 @@ $code-color: $color-green-pure;
 @import "../../node_modules/bootstrap/scss/navbar";
 @import "../../node_modules/bootstrap/scss/dropdown";
 @import "../../node_modules/bootstrap/scss/alert";
+@import '../../node_modules/bootstrap/scss/tables';
 
 /*
 Available Bootstrap imports:

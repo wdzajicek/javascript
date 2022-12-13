@@ -1,0 +1,172 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Intersection Observer API | JavaScript</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+      <!-- Link to Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Roboto:wght@300;400;500;700&family=Roboto+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+      
+    <!-- Link to this site's main stylesheet -->
+    <link rel="stylesheet" href="../../assets/js/dist/main.1963778d6d5714eec13e.css">
+    
+
+  <meta name="theme-color" content="#58a6ff">
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg border-bottom border-3">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="../../">
+      <img
+        src="../../assets/img/icon.png"
+        height="75"
+        width="75"
+        alt="JS">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            JavaScript
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="../../javascript">JavaScript</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="../../javascript/functions">Functions</a></li>
+            <li><a class="dropdown-item" href="../../javascript/objects">Objects</a></li>
+            <li><a class="dropdown-item" href="../../javascript/generators">Generators</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Web APIs
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="../../web">Web APIs</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="../../web/intersection-observer">Intersection Observer</a></li>
+            <li><a class="dropdown-item" href="../../web/nodeiterator-treewalker">NodeIterator & TreeWalker</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Node.js
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="../../nodejs">Node.js</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="../../nodejs">File System <code class="code code--bg">fs</code></a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  <main class="container mt-3">
+    <div class="row">
+      <div class="col">
+        <h1 id="intersection-observer-api">Intersection Observer API</h1>
+
+<hr />
+
+<h2 id="contents">Contents</h2>
+
+<ul>
+  <li><a href="#intersection-observer-api">Intersection Observer API</a>
+    <ul>
+      <li><a href="#contents">Contents</a></li>
+      <li><a href="#the-basics">The Basics</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="the-basics">The Basics</h2>
+
+<p>Sometimes you need to know when an element has been scrolled into 
+the viewport — to lazy load an image once it has been scrolled to.</p>
+
+<p>Some examples include:</p>
+<ul>
+  <li>loading images or videos as the user scrolls down the page</li>
+  <li>loading more content as the user scrolls (infinite scrolling app or website)</li>
+  <li>firing adds once the user reaches a certain spot in the page</li>
+</ul>
+
+<p>Historically, JavaScript didn’t have a good way to handle these types of situations.</p>
+
+<p>In the past you would watch for scroll events on the document and check if 
+an element has entered the viewport using <code class="language-plaintext highlighter-rouge">element.getBoundingClientRect()</code>:</p>
+
+<div class="language-javascript code--wrong highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">imageList</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="dl">'</span><span class="s1">img[data-src]</span><span class="dl">'</span><span class="p">);</span> <span class="c1">// The thing we will watch for</span>
+
+<span class="kd">function</span> <span class="nx">checkVisibility</span><span class="p">(</span><span class="nx">element</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// Returns true if the image is in view or false if it's not</span>
+  <span class="kd">const</span> <span class="nx">rect</span> <span class="o">=</span> <span class="nx">element</span><span class="p">.</span><span class="nx">getBoundingClientRect</span><span class="p">();</span>
+
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="nx">rect</span><span class="p">.</span><span class="nx">top</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span>
+    <span class="nx">rect</span><span class="p">.</span><span class="nx">left</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span>
+    <span class="nx">rect</span><span class="p">.</span><span class="nx">bottom</span> <span class="o">&lt;=</span> <span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">innerHeight</span> <span class="o">||</span> <span class="nb">document</span><span class="p">.</span><span class="nx">documentElement</span><span class="p">.</span><span class="nx">clientHeight</span><span class="p">)</span> <span class="o">&amp;&amp;</span>
+    <span class="nx">rect</span><span class="p">.</span><span class="nx">right</span> <span class="o">&lt;=</span> <span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">innerWidth</span> <span class="o">||</span> <span class="nb">document</span><span class="p">.</span><span class="nx">documentElement</span><span class="p">.</span><span class="nx">clientWidth</span><span class="p">)</span>
+  <span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">scroll</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="c1">// This is were the problem lies</span>
+  <span class="nx">imageList</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">img</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span> <span class="nx">checkVisibility</span><span class="p">(</span><span class="nx">image</span><span class="p">)</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Do something when the images is in view</span>
+    <span class="cm">/* ... */</span>
+    <span class="p">}</span>
+  <span class="p">})</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p>The problem with this, however, is the serious hit on performance it can cause.</p>
+
+<p>Adding a scroll event listener to the document (<code class="language-plaintext highlighter-rouge">document.addEventListener('scroll', /* ... */)</code>) 
+is generally a bad idea; your script has to watch the document 
+for scrolls indefinitely since we don’t know what the user will do. 
+And if you are watching for multiple elements you can easily bog 
+down the main thread your Javascript is running on making the whole 
+browser slow.</p>
+
+<p>Unless you plan to do something immediately — the first time the user
+scrolls, and then destroy the event listener right away — you should 
+avoid this method for implementing any kind of lazy loading.</p>
+
+<p>The Intersection Observer API was created to solve these problems.</p>
+
+
+      </div>
+    </div>
+  </main>
+  <footer class="mt-5 border-top border-3">
+  <div class="container py-5">
+    <div class="row">
+      <div class="col px-5">
+        <h5>
+          <a href="/">
+            JS
+          </a>
+        </h5>
+        <p>&copy; 2022 Wesley Zajicek</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+      <!-- custom compiled and minified javascript -->
+    <script src="/assets/js/dist/main.1963778d6d5714eec13e.bundle.js" defer></script>
+
+</body>
+</html>
+

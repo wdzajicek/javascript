@@ -6,14 +6,14 @@
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
-  <link rel="manifest" href="/javascript/site.webmanifest">
-  <link rel="apple-touch-icon" href="/javascript/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
       <!-- Link to Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Roboto:wght@400;500;700&family=Roboto+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Roboto:wght@300;400;500;700&family=Roboto+Mono:wght@400;600&display=swap" rel="stylesheet">
 
       
     <!-- Link to this site's main stylesheet -->
-    <link rel="stylesheet" href="../../assets/js/dist/main.912481246cb8b020dcbd.css">
+    <link rel="stylesheet" href="../../assets/js/dist/main.1963778d6d5714eec13e.css">
     
 
   <meta name="theme-color" content="#58a6ff">
@@ -22,21 +22,18 @@
 
   <nav class="navbar navbar-expand-lg border-bottom border-3">
   <div class="container-fluid">
-    <a class="navbar-brand" href="../../">JS</a>
+    <a class="navbar-brand" href="../../">
+      <img
+        src="../../assets/img/icon.png"
+        height="75"
+        width="75"
+        alt="JS">
+    </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Web APIs
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="../../web">Web APIs</a></li>
-            <li><hr class="dropdown-divider"></li>
-          </ul>
-        </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             JavaScript
@@ -47,6 +44,27 @@
             <li><a class="dropdown-item" href="../../javascript/functions">Functions</a></li>
             <li><a class="dropdown-item" href="../../javascript/objects">Objects</a></li>
             <li><a class="dropdown-item" href="../../javascript/generators">Generators</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Web APIs
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="../../web">Web APIs</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="../../web/intersection-observer">Intersection Observer</a></li>
+            <li><a class="dropdown-item" href="../../web/nodeiterator-treewalker">NodeIterator & TreeWalker</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Node.js
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="../../nodejs">Node.js</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="../../nodejs">File System <code class="code code--bg">fs</code></a></li>
           </ul>
         </li>
       </ul>
@@ -75,6 +93,7 @@
           <li><a href="#generator-methods">Generator Methods</a>
             <ul>
               <li><a href="#generatorprototypenext"><code class="language-plaintext highlighter-rouge">Generator.prototype.next()</code></a></li>
+              <li><a href="#generatorprototypereturn"><code class="language-plaintext highlighter-rouge">Generator.prototype.return()</code></a></li>
             </ul>
           </li>
         </ul>
@@ -88,9 +107,9 @@
 
 <p>A normal JS function can return a single value, or nothing at all.</p>
 
-<p>Generators can return (or <code class="language-plaintext highlighter-rouge">yield</code>) multiple values, one after another, and on-demand (i.e. jump out and back into the loop.)</p>
+<p>But what if we need to return multiple values?</p>
 
-<p>One good application for using generators, along with iterables, is creating a data-stream.</p>
+<p>Generators can return (or <code class="language-plaintext highlighter-rouge">yield</code>) multiple values, one after another, and on-demand (i.e. jump out and back into the loop.)</p>
 
 <h2 id="generator-functions">Generator Functions</h2>
 
@@ -115,7 +134,7 @@
 
 <span class="c1">// "generator" function creates "generator object"</span>
 <span class="kd">let</span> <span class="nx">generator</span> <span class="o">=</span> <span class="nx">generateSequence</span><span class="p">();</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">generator</span><span class="p">);</span> <span class="c1">// [object Generator]</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">generator</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span> <span class="c1">// [object Generator]</span>
 </code></pre></div></div>
 
 <h3 id="constructor">Constructor</h3>
@@ -140,13 +159,13 @@ The only way to create an instance of one is by calling a generator function.</p
 <p>Calling <code class="language-plaintext highlighter-rouge">next()</code> on a generator function does the following:</p>
 <ol>
   <li>Execution runs until the nearest <code class="language-plaintext highlighter-rouge">yield</code> statement.</li>
-  <li>The yielded value is returned to the outer code.</li>
+  <li>The yielded value is returned to the outer code (where <code class="language-plaintext highlighter-rouge">.next()</code> was called.)</li>
 </ol>
 
 <p>The <code class="language-plaintext highlighter-rouge">yield</code> statement may return a <code class="language-plaintext highlighter-rouge">value</code> (<code class="language-plaintext highlighter-rouge">yield &lt;value&gt;</code>,) or
 if omitted, returns <code class="language-plaintext highlighter-rouge">undefined</code>.</p>
 
-<p><code class="language-plaintext highlighter-rouge">next()</code> will always return an object with two values:</p>
+<p><code class="language-plaintext highlighter-rouge">next()</code> will always returns an object with two values:</p>
 <ul>
   <li><code class="language-plaintext highlighter-rouge">value</code>: which is set to the yielded value (or undefined)</li>
   <li><code class="language-plaintext highlighter-rouge">done</code>: which is either <code class="language-plaintext highlighter-rouge">true</code> (indicating the function has finished,) or <code class="language-plaintext highlighter-rouge">false</code> indicating that there is more to yield.</li>
@@ -158,7 +177,6 @@ if omitted, returns <code class="language-plaintext highlighter-rouge">undefined
   <span class="k">return</span> <span class="mi">3</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="c1">// "generator" function creates "generator object"</span>
 <span class="kd">let</span> <span class="nx">generator</span> <span class="o">=</span> <span class="nx">generateSequence</span><span class="p">();</span>
 <span class="kd">let</span> <span class="nx">one</span> <span class="o">=</span> <span class="nx">generator</span><span class="p">.</span><span class="nx">next</span><span class="p">();</span>
 <span class="kd">let</span> <span class="nx">two</span> <span class="o">=</span> <span class="nx">generator</span><span class="p">.</span><span class="nx">next</span><span class="p">();</span>
@@ -169,9 +187,48 @@ if omitted, returns <code class="language-plaintext highlighter-rouge">undefined
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">three</span><span class="p">));</span> <span class="c1">// { value: 3, done: true }</span>
 </code></pre></div></div>
 
+<p>If an argument is supplied to <code class="language-plaintext highlighter-rouge">.next()</code> it becomes the yielded value returned by the generator.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span><span class="o">*</span> <span class="nx">generateSequence</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">yield</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="k">yield</span> <span class="mi">2</span><span class="p">;</span>
+  <span class="k">yield</span> <span class="mi">3</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nx">generator</span> <span class="o">=</span> <span class="nx">generateSequence</span><span class="p">();</span>
+<span class="kd">let</span> <span class="nx">one</span> <span class="o">=</span> <span class="nx">generator</span><span class="p">.</span><span class="nx">next</span><span class="p">();</span>
+<span class="kd">let</span> <span class="nx">next</span> <span class="o">=</span> <span class="nx">generator</span><span class="p">.</span><span class="nx">next</span><span class="p">(</span><span class="dl">'</span><span class="s1">newValue</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">one</span><span class="p">));</span> <span class="c1">// { value: 1, done: false }</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">next</span><span class="p">));</span> <span class="c1">// { value: 'newValue' , done: false }</span>
+</code></pre></div></div>
+
+<h4 id="generatorprototypereturn"><code class="language-plaintext highlighter-rouge">Generator.prototype.return()</code></h4>
+
+<p>The <code class="language-plaintext highlighter-rouge">Generator.prototype.return()</code> method causes the generator to act as if 
+a <code class="language-plaintext highlighter-rouge">return</code> statement were inserted into the generator function’s current position.</p>
+
+<p>If an argument is supplied (<code class="language-plaintext highlighter-rouge">.return(&lt;value&gt;)</code>,) it becomes the value returned by the generator.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span><span class="o">*</span> <span class="nx">generateSequence</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">yield</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="k">yield</span> <span class="mi">2</span><span class="p">;</span>
+  <span class="k">yield</span> <span class="mi">3</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nx">generator</span> <span class="o">=</span> <span class="nx">generateSequence</span><span class="p">();</span>
+<span class="kd">let</span> <span class="nx">one</span> <span class="o">=</span> <span class="nx">generator</span><span class="p">.</span><span class="nx">next</span><span class="p">();</span>
+<span class="kd">let</span> <span class="nx">stop</span> <span class="o">=</span> <span class="nx">generator</span><span class="p">.</span><span class="k">return</span><span class="p">(</span><span class="dl">'</span><span class="s1">stop</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">let</span> <span class="nx">three</span> <span class="o">=</span> <span class="nx">generator</span><span class="p">.</span><span class="nx">next</span><span class="p">();</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">one</span><span class="p">));</span> <span class="c1">// { value: 1, done: false }</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">stop</span><span class="p">));</span> <span class="c1">// { value: 'stop' , done: true }</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">three</span><span class="p">));</span> <span class="c1">// { value: undefined, done: true }</span>
+</code></pre></div></div>
+
 <h2 id="iterating-over-generators">Iterating Over Generators</h2>
 
-<p>Use <code class="language-plaintext highlighter-rouge">for..of</code>:</p>
+<p>Use <code class="language-plaintext highlighter-rouge">for..of</code> to iterate over a generator:</p>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span><span class="o">*</span> <span class="nx">generateSequence</span><span class="p">()</span> <span class="p">{</span>
   <span class="k">yield</span> <span class="mi">1</span><span class="p">;</span>
@@ -205,8 +262,23 @@ To show all the results you must use <code class="language-plaintext highlighter
       </div>
     </div>
   </main>
+  <footer class="mt-5 border-top border-3">
+  <div class="container py-5">
+    <div class="row">
+      <div class="col px-5">
+        <h5>
+          <a href="/">
+            JS
+          </a>
+        </h5>
+        <p>&copy; 2022 Wesley Zajicek</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
       <!-- custom compiled and minified javascript -->
-    <script src="/javascript/assets/js/dist/main.912481246cb8b020dcbd.bundle.js" defer></script>
+    <script src="/assets/js/dist/main.1963778d6d5714eec13e.bundle.js" defer></script>
 
 </body>
 </html>

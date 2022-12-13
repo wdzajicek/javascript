@@ -22,16 +22,19 @@ baseurl: ''
 What does this mean?
 {: .lead}
 
-- **just-in-time (JIT) compiled**, also known as run-time compilation, means that the code is compiled just prior to execution.
-- **first-class functions** means that a language is capable of using functions like any other variable; they can be assigned, passed, returned, even placed inside an array.
+- **just-in-time (JIT) compiled**, also known as run-time compilation, means that the code is compiled just prior to  execution.
+- **first-class functions** means that a language is capable of using functions like any other variable; they can be assigned, passed, returned, even placed inside an array or object.
 - **prototype-based** programing languages are those where *behavior reuse* (or inheritance) is achieved through the reuse of existing objects &mdash; objects which serve as prototypes.
 - **single-threaded** means that JavaScrip runs on the browsers' main thread. This also means that performance matters.
 
 JavaScript by itself doesn't do anything; it must be run with a JavaScript engine.
-V8 is the most common JavaScript engine developed by Google.
-Browsers use a JavaScript engine to compile and execute JavaScript.
+V8 is the most common JavaScript engine and is developed by Google.
 
-The browser isn't the only environment that can run JavaScript.
+JavaScript also needs a place to be executed, which usually includes certain global variables and methods (for logging and other common tasks.) This is known as a ***runtime environment.*** Internet browsers use a JavaScript engine (most commonly V8) to compile and execute JavaScript. Browsers have a global `window` variable with properties like `console`, `alert`, `location`, and many more.
+
+The browser used to be the only JavaScript runtime environment &mdash; until the Node was created.
+
+<br>
 
 ## Node.js
 
@@ -47,10 +50,10 @@ It executes JavaScript outside a web browser.
 > {: .text-end }
 {: .blockquote .blockquote--border .mx-5 .px-4}
 
-Yes, Node.js is just JavaScript with some extra features for working with your operating system and file storage.
+Yes, Node.js is just JavaScript with some extra features for working with servers. Instead of browser methods, Node has methods for working with a server's file storage, network, databases and more.
 If you already know javascript then Node.js should be a piece of cake.
 
-Node.js is a common server environment that allows a developer to interact with a server using JavaScript.
+<br>
 
 ## JavaScript vs. Web APIs
 

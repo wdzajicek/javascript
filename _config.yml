@@ -40,3 +40,4 @@ exclude:
   - "ruby-version.txt"
   - "buildtools/"
   - "postcss.config.js"
+  - "docs"

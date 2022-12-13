@@ -1,0 +1,250 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>NodeIterator & TreeWalker | JavaScript</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+      <!-- Link to Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Roboto:wght@300;400;500;700&family=Roboto+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+      
+    <!-- Link to this site's main stylesheet -->
+    <link rel="stylesheet" href="../../assets/js/dist/main.1963778d6d5714eec13e.css">
+    
+
+  <meta name="theme-color" content="#58a6ff">
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg border-bottom border-3">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="../../">
+      <img
+        src="../../assets/img/icon.png"
+        height="75"
+        width="75"
+        alt="JS">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            JavaScript
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="../../javascript">JavaScript</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="../../javascript/functions">Functions</a></li>
+            <li><a class="dropdown-item" href="../../javascript/objects">Objects</a></li>
+            <li><a class="dropdown-item" href="../../javascript/generators">Generators</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Web APIs
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="../../web">Web APIs</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="../../web/intersection-observer">Intersection Observer</a></li>
+            <li><a class="dropdown-item" href="../../web/nodeiterator-treewalker">NodeIterator & TreeWalker</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Node.js
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="../../nodejs">Node.js</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="../../nodejs">File System <code class="code code--bg">fs</code></a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  <main class="container mt-3">
+    <div class="row">
+      <div class="col">
+        <h1 id="nodeiterator--treewalker"><code class="language-plaintext highlighter-rouge">NodeIterator</code> &amp; <code class="language-plaintext highlighter-rouge">TreeWalker</code></h1>
+
+<p><code class="language-plaintext highlighter-rouge">NodeIterator</code>s and <code class="language-plaintext highlighter-rouge">TreeWalker</code>s are very similar in syntax and what they do.
+Both represent a document subtree.</p>
+
+<p>A <code class="language-plaintext highlighter-rouge">TreeWalker</code> object, however, also tracks a position within the subtree.</p>
+
+<hr />
+
+<h2 id="contents">Contents</h2>
+
+<ul>
+  <li><a href="#nodeiterator--treewalker"><code class="language-plaintext highlighter-rouge">NodeIterator</code> \&amp; <code class="language-plaintext highlighter-rouge">TreeWalker</code></a>
+    <ul>
+      <li><a href="#contents">Contents</a></li>
+      <li><a href="#nodeiterator"><code class="language-plaintext highlighter-rouge">NodeIterator</code></a>
+        <ul>
+          <li><a href="#documentcreatenodeiterator"><code class="language-plaintext highlighter-rouge">Document.createNodeIterator()</code></a>
+            <ul>
+              <li><a href="#root"><code class="language-plaintext highlighter-rouge">root</code></a></li>
+              <li><a href="#whattoshow-optional"><code class="language-plaintext highlighter-rouge">whatToShow</code> optional</a></li>
+              <li><a href="#filter-optional"><code class="language-plaintext highlighter-rouge">filter</code> optional</a></li>
+              <li><a href="#examples">Examples</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li><a href="#treewalker"><code class="language-plaintext highlighter-rouge">TreeWalker</code></a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="nodeiterator"><code class="language-plaintext highlighter-rouge">NodeIterator</code></h2>
+
+<blockquote class="blockquote blockquote--border mx-5 px-4">
+  <p>The <code class="language-plaintext highlighter-rouge">NodeIterator</code> interface represents an iterator over a list of nodes in a subtree of the DOM.</p>
+
+  <p><a href="https://developer.mozilla.org/en-US/docs/Web/API/NodeIterator">https://developer.mozilla.org/en-US/docs/Web/API/NodeIterator</a></p>
+</blockquote>
+
+<h3 id="documentcreatenodeiterator"><code class="language-plaintext highlighter-rouge">Document.createNodeIterator()</code></h3>
+
+<p>The <code class="language-plaintext highlighter-rouge">Document.createNodeIterator()</code> method returns a new <code class="language-plaintext highlighter-rouge">NodeIterator</code> object.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">createNodeIterator</span><span class="p">(</span><span class="nx">root</span><span class="p">);</span>
+<span class="nx">createNodeIterator</span><span class="p">(</span><span class="nx">root</span><span class="p">,</span> <span class="nx">whatToShow</span><span class="p">);</span>
+<span class="nx">createNodeIterator</span><span class="p">(</span><span class="nx">root</span><span class="p">,</span> <span class="nx">whatToShow</span><span class="p">,</span> <span class="nx">filter</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h4 id="root"><code class="language-plaintext highlighter-rouge">root</code></h4>
+
+<p>The root node where the <code class="language-plaintext highlighter-rouge">NodeIterator</code> traversal starts.</p>
+
+<h4 id="whattoshow-optional"><code class="language-plaintext highlighter-rouge">whatToShow</code> <span class="typography__optional">optional</span></h4>
+
+<p><code class="language-plaintext highlighter-rouge">whatToShow</code> filters for the specified node type. It defaults to <code class="language-plaintext highlighter-rouge">SHOW_ALL</code></p>
+
+<table class="table table-striped table-hover mx-lg-5">
+  <thead>
+    <tr>
+      <th>NodeFilter constant</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">NodeFilter.SHOW_ALL</code></td>
+      <td>Shows all nodes.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">NodeFilter.SHOW_COMMENT</code></td>
+      <td>Shows comment nodes.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">NodeFilter.SHOW_DOCUMENT</code></td>
+      <td>Shows Document nodes.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">NodeFilter.SHOW_DOCUMENT_FRAGMENT</code></td>
+      <td>Shows DocumentFragment nodes.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">NodeFilter.SHOW_DOCUMENT_TYPE</code></td>
+      <td>Shows DocumentType nodes.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">NodeFilter.SHOW_ELEMENT</code></td>
+      <td>Shows Element nodes.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">NodeFilter.SHOW_PROCESSING_INSTRUCTION</code></td>
+      <td>Shows ProcessingInstruction nodes.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">NodeFilter.SHOW_TEXT</code></td>
+      <td>Shows Text nodes.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="filter-optional"><code class="language-plaintext highlighter-rouge">filter</code> <span class="typography__optional">optional</span></h4>
+
+<p><code class="language-plaintext highlighter-rouge">filter</code> is either a callback function or object with an <code class="language-plaintext highlighter-rouge">acceptNode()</code> method.
+The filter gets called for each node in the subtree (after <code class="language-plaintext highlighter-rouge">whatToShow</code> has already applied.)
+The filter function or method should return one of <code class="language-plaintext highlighter-rouge">NodeFilter.FILTER_ACCEPT</code>, <code class="language-plaintext highlighter-rouge">NodeFilter.FILTER_REJECT</code>, or <code class="language-plaintext highlighter-rouge">NodeFilter.FILTER_SKIP</code>.</p>
+
+<h4 id="examples">Examples</h4>
+
+<p>Using a callback function as the filter parameter:</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">nodeIterator</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createNodeIterator</span><span class="p">(</span>
+  <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">,</span>
+  <span class="nx">NodeFilter</span><span class="p">.</span><span class="nx">SHOW_TEXT</span><span class="p">,</span>
+  <span class="p">(</span><span class="nx">node</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span> <span class="nx">node</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">search</span><span class="p">(</span><span class="sr">/--/g</span><span class="p">)</span> <span class="o">!==</span> <span class="o">-</span><span class="mi">1</span> <span class="p">?</span> <span class="nx">NodeFilter</span><span class="p">.</span><span class="nx">FILTER_ACCEPT</span>
+    <span class="p">:</span> <span class="nx">NodeFilter</span><span class="p">.</span><span class="nx">FILTER_REJECT</span> <span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">);</span>
+
+<span class="kd">let</span> <span class="nx">currentNode</span><span class="p">;</span>
+
+<span class="k">while</span> <span class="p">(</span><span class="nx">currentNode</span> <span class="o">=</span> <span class="nx">nodeIterator</span><span class="p">.</span><span class="nx">nextNode</span><span class="p">())</span> <span class="p">{</span>
+  <span class="c1">// Do something with currentNode</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">currentNode</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>The same thing using an object with an <code class="language-plaintext highlighter-rouge">acceptNode()</code> method:</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">nodeIterator</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createNodeIterator</span><span class="p">(</span>
+  <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">,</span>
+  <span class="nx">NodeFilter</span><span class="p">.</span><span class="nx">SHOW_TEXT</span><span class="p">,</span>
+  <span class="p">{</span>
+    <span class="nx">acceptNode</span><span class="p">(</span><span class="nx">node</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="p">(</span> <span class="nx">node</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">search</span><span class="p">(</span><span class="sr">/--/g</span><span class="p">)</span> <span class="o">!==</span> <span class="o">-</span><span class="mi">1</span> <span class="p">?</span> <span class="nx">NodeFilter</span><span class="p">.</span><span class="nx">FILTER_ACCEPT</span>
+    <span class="p">:</span> <span class="nx">NodeFilter</span><span class="p">.</span><span class="nx">FILTER_REJECT</span> <span class="p">)</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">);</span>
+
+<span class="kd">let</span> <span class="nx">currentNode</span><span class="p">;</span>
+
+<span class="k">while</span> <span class="p">(</span><span class="nx">currentNode</span> <span class="o">=</span> <span class="nx">nodeIterator</span><span class="p">.</span><span class="nx">nextNode</span><span class="p">())</span> <span class="p">{</span>
+  <span class="c1">// Do something with currentNode</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">currentNode</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="treewalker"><code class="language-plaintext highlighter-rouge">TreeWalker</code></h2>
+
+
+      </div>
+    </div>
+  </main>
+  <footer class="mt-5 border-top border-3">
+  <div class="container py-5">
+    <div class="row">
+      <div class="col px-5">
+        <h5>
+          <a href="/">
+            JS
+          </a>
+        </h5>
+        <p>&copy; 2022 Wesley Zajicek</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+      <!-- custom compiled and minified javascript -->
+    <script src="/assets/js/dist/main.1963778d6d5714eec13e.bundle.js" defer></script>
+
+</body>
+</html>
+
