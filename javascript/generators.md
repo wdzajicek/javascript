@@ -15,7 +15,6 @@ baseurl: ../../
   - [Overview](#overview)
   - [Generator Functions](#generator-functions)
   - [The `Generator` Object](#the-generator-object)
-    - [Constructor](#constructor)
     - [Generator Methods](#generator-methods)
       - [`Generator.prototype.next()`](#generatorprototypenext)
       - [`Generator.prototype.return()`](#generatorprototypereturn)
@@ -56,8 +55,6 @@ function* generateSequence() {
 let generator = generateSequence();
 console.log(generator.toString()); // [object Generator]
 ```
-
-### Constructor
 
 There is no globally available `Generator` object.
 The only way to create an instance of one is by calling a generator function.

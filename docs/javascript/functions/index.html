@@ -6,14 +6,14 @@
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
-  <link rel="manifest" href="/site.webmanifest">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/javascript/site.webmanifest">
+  <link rel="apple-touch-icon" href="/javascript/apple-touch-icon.png">
       <!-- Link to Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Roboto:wght@300;400;500;700&family=Roboto+Mono:wght@400;600&display=swap" rel="stylesheet">
 
       
     <!-- Link to this site's main stylesheet -->
-    <link rel="stylesheet" href="../../assets/js/dist/main.1963778d6d5714eec13e.css">
+    <link rel="stylesheet" href="../../assets/js/dist/main.5f46af08f2f7d81f3bcf.css">
     
 
   <meta name="theme-color" content="#58a6ff">
@@ -90,21 +90,36 @@
         <ul>
           <li><a href="#function-declarations">Function Declarations</a></li>
           <li><a href="#function-expressions">Function Expressions</a></li>
+          <li><a href="#arrow-functions">Arrow Functions</a>
+            <ul>
+              <li><a href="#arrow-syntax">Arrow Syntax</a></li>
+              <li><a href="#where-arrow-functions-shine">Where Arrow Functions Shine</a></li>
+            </ul>
+          </li>
+          <li><a href="#function-constructor"><code class="language-plaintext highlighter-rouge">Function</code> Constructor</a>
+            <ul>
+              <li><a href="#function-constructor-syntax"><code class="language-plaintext highlighter-rouge">Function</code> Constructor Syntax</a></li>
+            </ul>
+          </li>
         </ul>
       </li>
       <li><a href="#parameters">Parameters</a>
         <ul>
-          <li><a href="#default-values">Default values</a></li>
+          <li><a href="#default-values">Default Values</a></li>
         </ul>
       </li>
       <li><a href="#calling-functions">Calling Functions</a></li>
       <li><a href="#hoisting">Hoisting</a></li>
       <li><a href="#local-variables">Local Variables</a></li>
       <li><a href="#outer-variables">Outer Variables</a></li>
-      <li><a href="#returning-a-value">Returning a value</a></li>
+      <li><a href="#returning-a-value">Returning a Value</a></li>
     </ul>
   </li>
 </ul>
+
+<p><br /></p>
+
+<hr />
 
 <h2 id="the-basics">The Basics</h2>
 
@@ -119,11 +134,11 @@ They allow us to organize our code into logical groupings and make it reuseable.
 <span class="p">}</span>
 </code></pre></div></div>
 
-<p><em>Defining</em> a function doesn’t <em>execute</em> it. Defining it gives it a name and specifies what the function should do.</p>
+<p><strong><em>Defining</em></strong> a function doesn’t execute it. Defining it gives it a name and specifies what it should do.</p>
 
 <p>See <a href="#defining-functions">Defining Functions</a> for more information.</p>
 
-<p><em>Calling</em> a function is what executes it with the given parameters.</p>
+<p><strong><em>Calling</em></strong> a function is what executes it with the given parameters.</p>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">sum</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">;</span>
@@ -139,7 +154,7 @@ They allow us to organize our code into logical groupings and make it reuseable.
 <span class="p">}</span>
 
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span> <span class="nx">sum</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="p">);</span> <span class="c1">// 4 is returned and then printed to the console!</span>
-<span class="c1">// We can store the result in a variable</span>
+<span class="c1">// We can store the result of a function call in a variable</span>
 <span class="kd">const</span> <span class="nx">three</span> <span class="o">=</span> <span class="nx">sum</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span> <span class="c1">// three = 3</span>
 
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">three</span><span class="p">);</span> <span class="c1">// 3</span>
@@ -148,6 +163,10 @@ They allow us to organize our code into logical groupings and make it reuseable.
 </code></pre></div></div>
 
 <p>See <a href="#calling-functions">Calling Functions</a> for more information.</p>
+
+<p><br /></p>
+
+<hr />
 
 <h2 id="defining-functions">Defining Functions</h2>
 
@@ -164,7 +183,7 @@ They allow us to organize our code into logical groupings and make it reuseable.
 <ul>
   <li>The <code class="language-plaintext highlighter-rouge">function</code> keyword followed by the name of the function.</li>
   <li>An (optional) comma separated list of parameters enclosed in parentheses.</li>
-  <li>Curly braces that enclose the function body which is holds the function statements (or tasks the function caries out).</li>
+  <li>Curly braces that enclose the function body which hold the function’s statements (or tasks the function caries out).</li>
 </ul>
 
 <h3 id="function-expressions">Function Expressions</h3>
@@ -175,10 +194,13 @@ They allow us to organize our code into logical groupings and make it reuseable.
 <span class="p">}</span>
 </code></pre></div></div>
 
+<p>Function expressions and function declarations look very similar.
+The main difference is that in function expressions, the function name is optional.</p>
+
 <p>The example above uses an anonymous function or a function without a name.
 Function expressions can use either named or anonymous functions.</p>
 
-<p>When debugging JavaScript, named functions make identification easier in the browser’s developer tools.</p>
+<p>When debugging JavaScript, however, named functions make identification easier in the browser’s developer tools.</p>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Better for debugging purposes</span>
 <span class="kd">const</span> <span class="nx">sum</span> <span class="o">=</span> <span class="kd">function</span> <span class="nx">add</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
@@ -186,13 +208,176 @@ Function expressions can use either named or anonymous functions.</p>
 <span class="p">}</span>
 </code></pre></div></div>
 
+<p>Naming a function expression enables it to call itself:</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">countDown</span> <span class="o">=</span> <span class="kd">function</span> <span class="nx">count</span><span class="p">(</span><span class="nx">num</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`[Count]: </span><span class="p">${</span><span class="nx">num</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+  
+  <span class="kd">let</span> <span class="nx">newNum</span> <span class="o">=</span> <span class="nx">num</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">newNum</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">count</span><span class="p">(</span><span class="nx">newNum</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">countDown</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+<span class="c1">// [Count]: 5</span>
+<span class="c1">// [Count]: 4</span>
+<span class="c1">// [Count]: 3</span>
+<span class="c1">// [Count]: 2</span>
+<span class="c1">// [Count]: 1</span>
+</code></pre></div></div>
+
+<h3 id="arrow-functions">Arrow Functions</h3>
+
+<p><strong><em>Arrow functions</em></strong>, more accurately called <strong><em>arrow function expressions</em></strong>, 
+are a more-compact, limited, and lightweight alternative to function expressions.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// A function expression</span>
+<span class="kd">const</span> <span class="nx">multiply1</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">a</span> <span class="o">*</span> <span class="nx">b</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Do the same thing with an arrow function</span>
+<span class="kd">const</span> <span class="nx">multiply2</span> <span class="o">=</span> <span class="p">(</span><span class="nx">a</span> <span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">a</span> <span class="o">*</span> <span class="nx">b</span><span class="p">;</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">multiply1</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">24</span><span class="p">));</span> <span class="c1">// 48</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">multiply2</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">24</span><span class="p">));</span> <span class="c1">// 48, the same result!</span>
+</code></pre></div></div>
+
+<p><strong>Some</strong> of these (intentional) limitations include:</p>
+<ul>
+  <li>Arrows have no <code class="language-plaintext highlighter-rouge">this</code> binding (no <code class="language-plaintext highlighter-rouge">arguments</code> or <code class="language-plaintext highlighter-rouge">super</code> either.)</li>
+  <li>Cannot be used as a <code class="language-plaintext highlighter-rouge">constructor</code> — using the <code class="language-plaintext highlighter-rouge">new</code> keyword throws a <code class="language-plaintext highlighter-rouge">TypeError</code>.</li>
+  <li>They cannot use the <code class="language-plaintext highlighter-rouge">yield</code> keyword to be used as a generator function.</li>
+  <li>Arrow functions have no <code class="language-plaintext highlighter-rouge">prototype</code> property — and consequently can’t access inherited <code class="language-plaintext highlighter-rouge">Function</code> properties or methods.</li>
+</ul>
+
+<h4 id="arrow-syntax">Arrow Syntax</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">param</span> <span class="o">=&gt;</span> <span class="nx">expression</span>
+
+<span class="p">(</span><span class="nx">param</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">expression</span>
+
+<span class="p">(</span><span class="nx">param1</span><span class="p">,</span> <span class="nx">paramN</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">expression</span>
+
+<span class="nx">param</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">statements</span>
+<span class="p">}</span>
+
+<span class="p">(</span><span class="nx">param1</span><span class="p">,</span> <span class="nx">paramN</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">statements</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>The only time the parenthesis in an arrow function may be omitted is if it has a <em>single simple</em> parameter.
+As soon as you have multiple parameters or need to use default, rest, destructured, or no parameters, parenthesis are required.</p>
+
+<p>The curly braces (and the <code class="language-plaintext highlighter-rouge">return</code> keyword) may be omitted only if the function directly returns an expression.
+This is called an arrow function with a <strong><em>concise body</em></strong>.</p>
+
+<p>If the arrow function has a block body, or multiple statements, the curly braces are required.
+An arrow function with curly braces (which creates a block scope) requires an explicit <code class="language-plaintext highlighter-rouge">return</code> statement to specify what is returned.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">sum1</span> <span class="o">=</span> <span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">sum2</span> <span class="o">=</span> <span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>When an arrow function is parsed and the token after the arrow (<code class="language-plaintext highlighter-rouge">=&gt;</code>) is not a left-side curly brace (<code class="language-plaintext highlighter-rouge">{</code>) it gets parsed as a concise body.
+This can cause unexpected behavior when trying to return an object literal in a concise body.</p>
+
+<div class="language-javascript code--wrong highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">createObject</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="na">a</span><span class="p">:</span> <span class="mi">2</span> <span class="p">};</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">createObject</span><span class="p">());</span> <span class="c1">// undefined</span>
+</code></pre></div></div>
+
+<p>If you need an arrow function that has a concise body to return an object literal, it needs to be wrapped in parenthesis:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">createObject</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">({</span> <span class="na">a</span><span class="p">:</span> <span class="mi">2</span> <span class="p">});</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">createObject</span><span class="p">());</span> <span class="c1">// {a: 2}</span>
+</code></pre></div></div>
+
+<h4 id="where-arrow-functions-shine">Where Arrow Functions Shine</h4>
+
+<p>Arrow functions are ideal in certain situations, like supplying a function as an argument.
+For example, arrow functions are often used in conjunction with <code class="language-plaintext highlighter-rouge">EventTarget.prototype.addEventListener()</code>.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// More concise eventListeners</span>
+<span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">load</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="c1">// ...</span>
+<span class="p">});</span>
+
+<span class="c1">// Single line setTimeout()</span>
+<span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Hello World!</span><span class="dl">'</span><span class="p">),</span> <span class="mi">1</span><span class="nx">e3</span><span class="p">);</span>
+
+<span class="c1">// More concise promise chaining</span>
+<span class="nx">myPromise</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">a</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="c1">// ...</span>
+  <span class="p">})</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">b</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="c1">// ...</span>
+  <span class="p">})</span>
+</code></pre></div></div>
+
+<h3 id="function-constructor"><code class="language-plaintext highlighter-rouge">Function</code> Constructor</h3>
+
+<p><em><strong>The <code class="language-plaintext highlighter-rouge">Function</code> constructor should not be used in production code</strong> as it suffers from poor performance and security.</em></p>
+
+<div class="callout callout-danger">
+  <h4>Don't use the <code>Function</code> constructor</h4>
+  The <code>Function</code> constructor is mentioned for completeness.
+</div>
+
+<p>Using the <code class="language-plaintext highlighter-rouge">Function</code> constructor with user input is especially dangerous as it opens up the possibility of you website or app running malicious code through injection.</p>
+
+<p>When a <strong>function expression</strong> or <strong>function declaration</strong> is used to create a function it gets parsed normally with the rest of the JavaScript code. With a <code class="language-plaintext highlighter-rouge">Function</code> constructor, however, it gets parsed when it is created. Consequently, a <code class="language-plaintext highlighter-rouge">Function</code> constructor does not receive the same optimizations and is inherently slower.</p>
+
+<h4 id="function-constructor-syntax"><code class="language-plaintext highlighter-rouge">Function</code> Constructor Syntax</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">new</span> <span class="nb">Function</span><span class="p">(</span><span class="nx">functionBody</span><span class="p">);</span>
+<span class="k">new</span> <span class="nb">Function</span><span class="p">(</span><span class="nx">arg0</span><span class="p">,</span> <span class="nx">functionBody</span><span class="p">);</span>
+<span class="k">new</span> <span class="nb">Function</span><span class="p">(</span><span class="nx">arg0</span><span class="p">,</span> <span class="nx">arg1</span><span class="p">,</span> <span class="nx">functionBody</span><span class="p">);</span>
+<span class="k">new</span> <span class="nb">Function</span><span class="p">(</span><span class="nx">arg0</span><span class="p">,</span> <span class="nx">arg1</span><span class="p">,</span> <span class="cm">/* … ,*/</span> <span class="nx">argN</span><span class="p">,</span> <span class="nx">functionBody</span><span class="p">);</span>
+</code></pre></div></div>
+
+<!-- omit from toc -->
+<h5 id="function-constructor-parameters"><code class="language-plaintext highlighter-rouge">Function</code> Constructor Parameters</h5>
+
+<!-- omit from toc -->
+<h5 class="typography__param-name" id="argn-optional"><code class="language-plaintext highlighter-rouge">argN</code> <span class="typography__optional">optional</span></h5>
+
+<p class="typography__param-desc"><strong><em>Argument names</em></strong> may optionally be supplied. They must be a string that corresponds to a valid JavaScript parameter.
+This may include default, rest, or destructured parameters. Multiple argument names should be  separated by comas.</p>
+
+<p class="typography__param-desc">Any whitespace, comments, or comas used inside the argument names are perfectly valid.
+For example: <code class="language-plaintext highlighter-rouge">"a, b"</code> <code class="language-plaintext highlighter-rouge">"a", "b = 42", "[c, d] /* arr of numbers */"</code>.</p>
+
+<!-- omit from toc -->
+<h5 class="typography__param-name" id="functionbody"><code class="language-plaintext highlighter-rouge">functionBody</code></h5>
+
+<p class="typography__param-desc">A string containing the JavaScript statements comprising the function definition.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">new</code> keyword is optional.</p>
+
+<div class="language-javascript code--wrong highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">sum</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Function</span><span class="p">(</span><span class="dl">'</span><span class="s1">a</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">b</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">return a + b</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">sum</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span> <span class="c1">// 8</span>
+</code></pre></div></div>
+
+<p><br /></p>
+
+<hr />
+
 <h2 id="parameters">Parameters</h2>
 
 <p>Functions may optionally have <strong><em>parameters</em></strong> that allow us to pass arbitrary data to the function.</p>
 
 <p>A <strong><em>parameter</em></strong> is a named variable passed into a function.</p>
 
-<p>Parameters are used to import <strong><em>arguments</em></strong> into a function.</p>
+<p><em>Parameters</em> are used to import <strong><em>arguments</em></strong> into a function.</p>
 
 <p>The difference between <em>parameters</em> and <em>arguments</em>:</p>
 <ul>
@@ -201,7 +386,7 @@ Function expressions can use either named or anonymous functions.</p>
   <li><em>arguments</em> are passed to a function, the values of which are assigned to its <em>parameters</em>.</li>
 </ul>
 
-<h3 id="default-values">Default values</h3>
+<h3 id="default-values">Default Values</h3>
 
 <p>Calling a function that was defined with two parameters 
 using only one argument is perfectly valid JavaScript:</p>
@@ -234,7 +419,7 @@ using only one argument is perfectly valid JavaScript:</p>
 <span class="p">}</span>
 </code></pre></div></div>
 
-<p>In modern JavaScript a default parameter can be defined inside a function declaration parenthesis using <code class="language-plaintext highlighter-rouge">=</code>:</p>
+<p>In modern JavaScript a default parameter can be defined inside a function declaration’s parenthesis using <code class="language-plaintext highlighter-rouge">=</code> (the assignment operator):</p>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">helloUser</span><span class="p">(</span><span class="nx">greeting</span><span class="p">,</span> <span class="nx">user</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">Guest</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">greeting</span><span class="p">}</span><span class="s2">, </span><span class="p">${</span><span class="nx">user</span><span class="p">}</span><span class="s2">!`</span><span class="p">);</span>
@@ -255,13 +440,17 @@ using only one argument is perfectly valid JavaScript:</p>
 <span class="p">}</span>
 </code></pre></div></div>
 
+<p><br /></p>
+
+<hr />
+
 <h2 id="calling-functions">Calling Functions</h2>
 
 <p>As mentioned earlier, defining a function does not execute it.</p>
 
 <p>Calling the function is what executes it, and allows us to specify arguments.</p>
 
-<p>To call a function it must be <em>in scope</em>. The <em>scope</em> of a function is the function in which it was declared (or the entire script if declared at the top level.)</p>
+<p>To call a function it must be <em>in scope</em>. The <strong><em>scope</em></strong> of a function is the function in which it was declared (or the entire script if declared at the top level.)</p>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">someFunction</span><span class="p">()</span> <span class="p">{</span>
   <span class="kd">function</span> <span class="nx">internalFunction</span><span class="p">()</span> <span class="p">{</span>
@@ -278,9 +467,13 @@ using only one argument is perfectly valid JavaScript:</p>
 <p>In the example above, <code class="language-plaintext highlighter-rouge">internalFunction()</code> throws an error because it is out of scope.
 Since <code class="language-plaintext highlighter-rouge">internalFunction()</code> was defined inside <code class="language-plaintext highlighter-rouge">someFunction()</code>, its scope is limited to the function body of <code class="language-plaintext highlighter-rouge">someFunction()</code>.</p>
 
+<p><br /></p>
+
+<hr />
+
 <h2 id="hoisting">Hoisting</h2>
 
-<p>An important difference between <em>function declarations</em> and <em>function expressions</em> is that the former may be <strong><em>hoisted</em></strong> while the latter may not be.</p>
+<p>An important difference between <strong>function declarations</strong> and <strong>function expressions</strong> is that the former may be <strong><em>hoisted</em></strong> while the latter may not be.</p>
 
 <p><strong>What is function hoisting?</strong></p>
 
@@ -302,7 +495,7 @@ Since <code class="language-plaintext highlighter-rouge">internalFunction()</cod
 <span class="p">}</span>
 </code></pre></div></div>
 
-<p>This works because the JavaScript interpreter hoists our <em>function definition</em> to the top of our scope.</p>
+<p>This works because the JavaScript interpreter <em>hoists</em> our function definition to the top of our scope.</p>
 
 <p>A similar function expression will cause an error:</p>
 <div class="language-javascript code--wrong highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">logMessage</span><span class="p">(</span><span class="dl">'</span><span class="s1">Hello there!</span><span class="dl">'</span><span class="p">);</span> <span class="c1">// ERROR! Uncaught ReferenceError: logMessage is not defined</span>
@@ -311,6 +504,10 @@ Since <code class="language-plaintext highlighter-rouge">internalFunction()</cod
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">msg</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div></div>
+
+<p><br /></p>
+
+<hr />
 
 <h2 id="local-variables">Local Variables</h2>
 
@@ -329,6 +526,10 @@ Since <code class="language-plaintext highlighter-rouge">internalFunction()</cod
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">newText</span><span class="p">);</span> <span class="c1">// ERROR! ReferenceError: newText is not defined</span>
 </code></pre></div></div>
 
+<p><br /></p>
+
+<hr />
+
 <h2 id="outer-variables">Outer Variables</h2>
 
 <p>A function may access outer variables if a local variable of the same name does not exist.</p>
@@ -337,7 +538,7 @@ Since <code class="language-plaintext highlighter-rouge">internalFunction()</cod
 
 <span class="c1">// A simple function that returns the circumference of a circle where r = radius</span>
 <span class="kd">function</span> <span class="nx">calculateCircumference</span><span class="p">(</span><span class="nx">r</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="mi">2</span> <span class="o">*</span> <span class="nx">r</span> <span class="o">*</span> <span class="nx">pi</span><span class="p">;</span>
+  <span class="k">return</span> <span class="mi">2</span> <span class="o">*</span> <span class="nx">r</span> <span class="o">*</span> <span class="nx">pi</span><span class="p">;</span> <span class="c1">// pi is taken from the const pi defined above</span>
 <span class="p">}</span>
 
 <span class="kd">const</span> <span class="nx">c</span> <span class="o">=</span> <span class="nx">calculateCircumference</span><span class="p">(</span><span class="mf">0.5</span><span class="p">);</span>
@@ -359,7 +560,11 @@ Since <code class="language-plaintext highlighter-rouge">internalFunction()</cod
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">c</span><span class="p">);</span> <span class="c1">// 3.1415926535, used local pi variable - notice the precision!</span>
 </code></pre></div></div>
 
-<h2 id="returning-a-value">Returning a value</h2>
+<p><br /></p>
+
+<hr />
+
+<h2 id="returning-a-value">Returning a Value</h2>
 
 <p>A function may return a value back into the calling code.
 This is accomplished using a <code class="language-plaintext highlighter-rouge">return</code> statement inside the function declaration:</p>
@@ -373,7 +578,7 @@ This is accomplished using a <code class="language-plaintext highlighter-rouge">
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span> <span class="c1">// 4</span>
 </code></pre></div></div>
 
-<p><code class="language-plaintext highlighter-rouge">return</code> also stops execution of a function. This also means that any code after <code class="language-plaintext highlighter-rouge">return [expression];</code> is unreachable
+<p>The <code class="language-plaintext highlighter-rouge">return</code> keyword also stops execution of a function. This also means that any code after <code class="language-plaintext typography--nowrap highlighter-rouge">return [expression];</code> is unreachable
 and won’t be executed.</p>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">someFunc</span><span class="p">()</span> <span class="p">{</span>
@@ -398,6 +603,9 @@ It can be used to interrupt execution of a function early-on which prevents exec
 <span class="p">}</span>
 </code></pre></div></div>
 
+<p><br /></p>
+
+<hr />
 
       </div>
     </div>
@@ -407,7 +615,7 @@ It can be used to interrupt execution of a function early-on which prevents exec
     <div class="row">
       <div class="col px-5">
         <h5>
-          <a href="/">
+          <a href="/javascript/">
             JS
           </a>
         </h5>
@@ -418,7 +626,7 @@ It can be used to interrupt execution of a function early-on which prevents exec
 </footer>
 
       <!-- custom compiled and minified javascript -->
-    <script src="/assets/js/dist/main.1963778d6d5714eec13e.bundle.js" defer></script>
+    <script src="/javascript/assets/js/dist/main.5f46af08f2f7d81f3bcf.bundle.js" defer></script>
 
 </body>
 </html>

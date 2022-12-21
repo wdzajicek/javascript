@@ -18,6 +18,31 @@ baseurl: ../
 
 -----
 
-- [Objects](/ecma/objects)
+## Functions
 
-- [Generators](/ecma/genrators)
+- [Functions](./functions/#functions)
+  - [Contents](./functions/#contents)
+  - [The Basics](./functions/#the-basics)
+  - [Defining Functions](./functions/#defining-functions)
+    - [Function Declarations](./functions/#function-declarations)
+    - [Function Expressions](./functions/#function-expressions)
+    - [Arrow Functions](./functions/#arrow-functions)
+      - [Arrow Syntax](./functions/#arrow-syntax)
+      - [Where Arrow Functions Shine](./functions/#where-arrow-functions-shine)
+    - [`Function` Constructor](./functions/#function-constructor)
+      - [`Function` Constructor Syntax](./functions/#function-constructor-syntax)
+  - [Parameters](./functions/#parameters)
+    - [Default Values](./functions/#default-values)
+  - [Calling Functions](./functions/#calling-functions)
+  - [Hoisting](./functions/#hoisting)
+  - [Local Variables](./functions/#local-variables)
+  - [Outer Variables](./functions/#outer-variables)
+  - [Returning a Value](./functions/#returning-a-value)
+
+## Objects
+
+- [Objects](/javascript/objects)
+
+## Generators
+
+- [Generators](/javascript/generators)

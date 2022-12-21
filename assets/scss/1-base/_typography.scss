@@ -8,3 +8,15 @@
   padding-left: .75rem;
   padding-right: .75rem;
 }
+
+.typography--nowrap {
+  white-space: nowrap;
+}
+
+.typography__param-name {
+  padding-inline-start: 2rem;
+}
+
+.typography__param-desc {
+  padding-inline-start: 3.5rem;
+}
